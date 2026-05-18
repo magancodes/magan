@@ -1,0 +1,793 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------
+   FONT FACES
+   PRIMARY (local):
+     - Tobias VF (upright)           → giant serif, section titles, intro greeting
+     - Tobias Regular Italic         → italic serif lines (now preferred over Rhymes)
+     - Rhymes Thin Italic            → kept as italic fallback
+     - Gilroy Regular + SemiBold     → body / meta / links
+   FALLBACK (Google):
+     - Cormorant Garamond            → upright serif fallback
+     - Inter Tight                   → sans fallback if Gilroy fails to load
+--------------------------------------------------- */
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Inter+Tight:wght@100;200;300;400&display=swap");
+
+/* Tobias — variable font (100–900 weight, upright) */
+@font-face {
+  font-family: "Tobias";
+  src: url("/fonts/Tobias/TobiasVF-TRIAL.woff2") format("woff2-variations"),
+       url("/fonts/Tobias/TobiasVF-TRIAL.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Tobias — italic (static regular italic, covers most italic weights) */
+@font-face {
+  font-family: "Tobias";
+  src: url("/fonts/Tobias/Tobias-TRIAL-RegularItalic.woff2") format("woff2");
+  font-weight: 200 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Rhymes — italic only (trial cut). Kept as italic fallback. */
+@font-face {
+  font-family: "Rhymes";
+  src: url("/fonts/Rhymes-ThinItalic.woff2") format("woff2");
+  font-weight: 100 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Gilroy — regular cut, mapped across the full thin→regular range. */
+@font-face {
+  font-family: "Gilroy";
+  src: url("/fonts/Gilroy-Regular.woff2") format("woff2");
+  font-weight: 100 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/fonts/Gilroy-SemiBold.woff2") format("woff2");
+  font-weight: 600 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* slaty dark — a touch lighter than pure black with a faint blue undertone */
+  --bg: #0e1117;
+
+  /* pale yellowish cream — used both as primary text AND as the brutalist
+     block color in the hero, so they're literally the same color */
+  --primary: #f0e5c7;
+
+  /* warm muted secondary */
+  --secondary: #a19c85;
+
+  --line: rgba(240, 229, 199, 0.12);
+
+  /* deep red-orange used for the hero quote overlay.
+     - on cream #F0E5C7  → ~4.3:1 contrast (large-text AA pass with margin)
+     - on slate #0E1117  → ~3.5:1 contrast (large-text AA pass with margin)
+     this hue intentionally sits in the middle band so it reads on both
+     the warm pale blocks and the slaty bg without flipping luminance. */
+  --rust: #c53219;
+
+  /* serif stack: Tobias upright + italic from local files */
+  --font-serif: "Tobias", "Rhymes", "Cormorant Garamond", "Canela",
+    "PP Editorial New", Georgia, serif;
+
+  /* sans stack: Gilroy first, then Inter Tight as the safety net */
+  --font-sans: "Gilroy", "Inter Tight", "Neue Montreal", "Suisse Intl",
+    system-ui, sans-serif;
+
+  --col-width: 520px;
+  --left-pad: 18vw;
+  --top-pad: 120px;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--primary);
+  font-family: var(--font-sans);
+  font-weight: 200;
+  font-feature-settings: "ss01", "ss02", "kern";
+}
+
+html {
+  scroll-behavior: auto; /* Lenis handles scroll */
+}
+
+body {
+  cursor: none;
+}
+
+@media (max-width: 720px) {
+  body {
+    cursor: auto;
+  }
+}
+
+::selection {
+  background: rgba(221, 84, 36, 0.28);
+  color: var(--primary);
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ---------------------------------------------------
+   TYPOGRAPHY PRIMITIVES
+--------------------------------------------------- */
+.hero-name {
+  font-family: var(--font-serif);
+  font-weight: 200;
+  line-height: 0.88;
+  letter-spacing: -0.045em;
+  font-size: clamp(5rem, 14.5vw, 18rem);
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  font-size: clamp(2rem, 4.6vw, 4rem);
+  color: var(--primary);
+}
+
+.intro-name {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+}
+
+.body-text {
+  font-family: var(--font-sans);
+  font-weight: 200;
+  font-size: clamp(15px, 1.05vw, 17px);
+  line-height: 1.7;
+  color: var(--primary);
+  max-width: var(--col-width);
+}
+
+.meta {
+  font-family: var(--font-sans);
+  font-weight: 200;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: var(--secondary);
+  text-transform: lowercase;
+}
+
+.muted {
+  color: var(--secondary);
+}
+
+.hairline {
+  border-color: var(--line);
+}
+
+/* ---------------------------------------------------
+   GRAIN OVERLAY
+--------------------------------------------------- */
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  opacity: 0.08;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  background-size: 220px 220px;
+}
+
+.vignette {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 55;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 50%,
+    rgba(4, 6, 10, 0.55) 100%
+  );
+}
+
+/* ---------------------------------------------------
+   HERO — BRUTALIST BLOCK COMPOSITION
+   Cream rectangles on slate bg in a stepped pattern,
+   with a rust-orange serif quote overlaid across both.
+--------------------------------------------------- */
+.hero-brutalist {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--bg);
+}
+
+/* on phones, shorten the hero so the next section's giant
+   "Hey, I am Magan." peeks from the bottom of the viewport. */
+@media (max-width: 720px) {
+  .hero-brutalist {
+    min-height: 76svh;
+  }
+}
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 0;
+  padding: clamp(40px, 6vw, 96px) 0;
+}
+
+.hero-block {
+  background: var(--primary);
+  position: relative;
+}
+
+/* a very subtle inner-edge so blocks read as blocks even when they touch */
+.hero-block::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(14, 17, 23, 0.06);
+}
+
+.hero-quote {
+  /* DESKTOP: one line, centered, big.
+     Centered via `left: 0; right: 0; margin-inline: auto` instead of
+     `transform: translateX(-50%)` — more reliable, no sub-pixel drift, and
+     works regardless of the element's intrinsic width math. */
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  transform: translateY(-50%);
+  width: max-content;
+  max-width: 92vw;
+  z-index: 5;
+
+  /* flex-row keeps the words inline */
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.1em;
+  white-space: nowrap;
+  text-align: center;
+
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-style: normal;
+  color: var(--rust);
+
+  /* MUCH bigger: caps at 6.5rem (104 px). natural line width with the
+     tightened spacing below is ~17.8em, so 5vw × 17.8 = ~89% of viewport →
+     always fits inside 92vw on viewports ≥ 1024 px. */
+  font-size: clamp(1.5rem, 5vw, 6.5rem);
+  line-height: 1;
+  letter-spacing: -0.045em;
+  word-spacing: -0.14em;
+
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke: 0.45px var(--rust);
+  paint-order: stroke fill;
+}
+
+.hero-quote .word,
+.hero-quote .sep {
+  display: inline-block;
+}
+
+.hero-quote .sep {
+  opacity: 0.92;
+  transform: translateY(-0.08em); /* optical alignment of the middle-dot */
+}
+
+/* MOBILE (<720px): stacked, left-aligned, big.
+   each word gets its own line, no dot separators.
+   The widest line is "product" (7 chars × ~0.95em ≈ 6.65em). At 13vw font,
+   that's ~88% of the viewport — fits comfortably with a 22 px gutter. */
+@media (max-width: 720px) {
+  .hero-quote {
+    /* break out of flex-row + centered baseline */
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: left;
+    white-space: nowrap;
+    gap: 0.02em;
+
+    /* anchor to the left edge with a comfortable gutter
+       (overrides the desktop translate(-50%, -50%) centering) */
+    left: max(22px, 6vw);
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    max-width: calc(100vw - 44px);
+
+    font-size: clamp(2.4rem, 13vw, 4.8rem);
+    letter-spacing: -0.045em;
+    word-spacing: 0;
+    line-height: 0.95;
+  }
+
+  /* drop the · separators on mobile */
+  .hero-quote .sep {
+    display: none;
+  }
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: clamp(24px, 4vw, 48px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--primary);
+  opacity: 0.55;
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.hero-scroll::before {
+  content: "";
+  width: 26px;
+  height: 1px;
+  background: currentColor;
+}
+
+/* ---------------------------------------------------
+   INTRO — giant greeting in Tobias serif
+--------------------------------------------------- */
+.intro-greeting {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-style: normal;
+  color: var(--primary);
+  font-size: clamp(2.75rem, 8vw, 8.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.028em;
+}
+
+/* on mobile, pull the intro section much closer to the hero
+   so the greeting peeks from below */
+@media (max-width: 720px) {
+  #intro {
+    padding-top: 36px !important;
+  }
+}
+
+/* ---------------------------------------------------
+   NAV — fixed top, minimal, hamburger on mobile
+--------------------------------------------------- */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 18px clamp(22px, 4vw, 56px);
+  background: transparent;
+  transition:
+    background-color 320ms ease,
+    backdrop-filter 320ms ease;
+}
+
+.nav-scrolled {
+  background: rgba(14, 17, 23, 0.55);
+  backdrop-filter: saturate(140%) blur(12px);
+  -webkit-backdrop-filter: saturate(140%) blur(12px);
+}
+
+/* when the mobile overlay is open, the nav sits above it
+   so the burger/close toggle is still reachable */
+.nav-over-overlay {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.nav-mark {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 22px;
+  color: var(--primary);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: clamp(14px, 1.8vw, 26px);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-link {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 12.5px;
+  letter-spacing: 0.025em;
+  text-transform: lowercase;
+  color: var(--primary);
+  text-decoration: none;
+  opacity: 0.72;
+  transition: opacity 220ms ease, color 220ms ease;
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  opacity: 1;
+  color: var(--rust);
+}
+
+/* HAMBURGER — hidden by default, shown on mobile */
+.nav-burger {
+  display: none;
+  position: relative;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-burger span {
+  position: absolute;
+  right: 6px;
+  display: block;
+  width: 22px;
+  height: 1.2px;
+  background: var(--primary);
+  transition:
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    top 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 220ms ease;
+}
+
+.nav-burger span:nth-child(1) {
+  top: calc(50% - 4px);
+}
+
+.nav-burger span:nth-child(2) {
+  top: calc(50% + 4px);
+}
+
+.nav-burger.is-open span:nth-child(1) {
+  top: 50%;
+  transform: rotate(45deg);
+}
+
+.nav-burger.is-open span:nth-child(2) {
+  top: 50%;
+  transform: rotate(-45deg);
+}
+
+@media (max-width: 720px) {
+  .nav {
+    padding: 16px 22px;
+  }
+  .nav-links {
+    display: none;
+  }
+  .nav-burger {
+    display: flex;
+  }
+}
+
+/* OVERLAY (mobile fullscreen menu) */
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 85;
+  background: var(--bg);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 96px max(22px, 6vw) 120px;
+}
+
+.nav-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.nav-overlay-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.nav-overlay-list li {
+  opacity: 0;
+  transform: translateY(16px);
+  filter: blur(6px);
+  transition:
+    opacity 560ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 560ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 560ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-overlay.is-open .nav-overlay-list li {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+.nav-overlay-link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 18px;
+  text-decoration: none;
+  font-family: var(--font-serif);
+  font-weight: 300;
+  color: var(--primary);
+  font-size: clamp(2rem, 10vw, 3.6rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  transition: color 220ms ease;
+}
+
+.nav-overlay-link:hover {
+  color: var(--rust);
+}
+
+.nav-overlay-link .nav-num {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  opacity: 0.5;
+  color: var(--primary);
+}
+
+.nav-overlay-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 48px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 480ms ease,
+    transform 480ms ease;
+}
+
+.nav-overlay.is-open .nav-overlay-footer {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* desktop: keep the overlay off entirely */
+@media (min-width: 721px) {
+  .nav-overlay {
+    display: none;
+  }
+}
+
+/* ---------------------------------------------------
+   CTA — small pill button
+--------------------------------------------------- */
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 9999px;
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: var(--primary);
+  text-decoration: none;
+  text-transform: lowercase;
+  white-space: nowrap;
+  transition:
+    border-color 320ms ease,
+    color 320ms ease,
+    background-color 320ms ease,
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cta-button:hover {
+  border-color: var(--rust);
+  color: var(--rust);
+}
+
+.cta-button:active {
+  transform: scale(0.97);
+}
+
+/* ---------------------------------------------------
+   CUSTOM CURSOR
+--------------------------------------------------- */
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 9999px;
+  border: 1px solid rgba(245, 245, 245, 0.55);
+  pointer-events: none;
+  z-index: 80;
+  transform: translate3d(-50%, -50%, 0);
+  transition: width 280ms ease, height 280ms ease,
+    background-color 280ms ease, border-color 280ms ease;
+  mix-blend-mode: difference;
+  will-change: transform;
+}
+
+.cursor.is-link {
+  width: 44px;
+  height: 44px;
+  background: rgba(245, 245, 245, 0.06);
+  border-color: rgba(245, 245, 245, 0.85);
+}
+
+@media (max-width: 720px) {
+  .cursor {
+    display: none;
+  }
+}
+
+/* ---------------------------------------------------
+   LINKS — minimal, underline grows on hover
+--------------------------------------------------- */
+.link {
+  position: relative;
+  display: inline-block;
+  color: var(--primary);
+  font-family: var(--font-sans);
+  font-weight: 200;
+  text-decoration: none;
+  letter-spacing: 0.005em;
+  padding-bottom: 2px;
+  transition: filter 480ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 320ms ease;
+  filter: blur(0.35px);
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 1px;
+  width: 100%;
+  background: rgba(245, 245, 245, 0.25);
+  transform-origin: left;
+  transform: scaleX(1);
+  transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 320ms ease;
+}
+
+.link:hover {
+  filter: blur(0);
+  color: var(--primary);
+}
+
+.link:hover::after {
+  background: rgba(245, 245, 245, 0.9);
+  transform: scaleX(1);
+}
+
+/* project links — staged underline animation */
+.project-link {
+  position: relative;
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-weight: 200;
+  font-size: clamp(17px, 1.5vw, 22px);
+  letter-spacing: -0.005em;
+  color: var(--primary);
+  padding: 2px 0 4px;
+  text-decoration: none;
+  filter: blur(0.6px);
+  transition: filter 600ms cubic-bezier(0.22, 1, 0.36, 1),
+    letter-spacing 600ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-link::before,
+.project-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 1px;
+  width: 100%;
+}
+
+.project-link::before {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.project-link::after {
+  background: var(--primary);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-link:hover {
+  filter: blur(0);
+  letter-spacing: 0.002em;
+}
+
+.project-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.reveal-init {
+  opacity: 0;
+  filter: blur(8px);
+  transform: translateY(14px);
+}
