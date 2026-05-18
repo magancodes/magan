@@ -5,7 +5,6 @@ import InterIIT from "@/components/sections/InterIIT";
 import Past from "@/components/sections/Past";
 import Trxnd from "@/components/sections/Trxnd";
 import Philosophy from "@/components/sections/Philosophy";
-import Projects from "@/components/sections/Projects";
 import Thoughts from "@/components/sections/Thoughts";
 import Contact from "@/components/sections/Contact";
 
@@ -19,7 +18,6 @@ export default function Page() {
       <Past />
       <Trxnd />
       <Philosophy />
-      <Projects />
       <Thoughts />
       <Contact />
     </main>

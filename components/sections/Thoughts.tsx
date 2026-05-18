@@ -16,7 +16,7 @@ export default function Thoughts() {
     <Column id="thoughts" topPad={260}>
       <Reveal y={18} blur={10}>
         <p className="meta" style={{ marginBottom: 26 }}>
-          07 — fragments
+          06 — fragments
         </p>
       </Reveal>
 
