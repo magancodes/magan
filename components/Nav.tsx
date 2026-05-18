@@ -55,17 +55,33 @@ export default function Nav() {
 
   const goTo = (id: string) => (e: React.MouseEvent) => {
     e.preventDefault();
-    setOpen(false);
+
+    /* 1. Restore scrolling SYNCHRONOUSLY — don't wait for React state.
+          If we don't, `lenis.stop()` from the [open] effect leaves the page
+          locked and `lenis.scrollTo()` becomes a no-op on mobile. */
     const lenis = window.__lenis;
+    lenis?.start();
+    document.body.style.overflow = "";
+    document.documentElement.classList.remove("lenis-stopped");
+
+    /* 2. Close the overlay (state update flushes on next render) */
+    setOpen(false);
+
+    /* 3. Schedule the scroll for the next frame so any pending React work
+          (the overlay fade-out) has time to commit before we animate. */
     const target = id === "top" ? 0 : `#${id}`;
-    if (lenis) {
-      // small offset so the section's meta label doesn't tuck under the nav
-      lenis.scrollTo(target, { duration: 1.6, offset: -32 });
-    } else if (typeof target === "string") {
-      document.querySelector(target)?.scrollIntoView({ behavior: "smooth" });
-    } else {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
+    const doScroll = () => {
+      if (lenis) {
+        // small offset so the section's meta label doesn't tuck under the nav
+        lenis.scrollTo(target, { duration: 1.6, offset: -32 });
+      } else if (typeof target === "string") {
+        document.querySelector(target)?.scrollIntoView({ behavior: "smooth" });
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    };
+
+    requestAnimationFrame(doScroll);
   };
 
   return (
