@@ -241,11 +241,10 @@ html.lenis body {
   background: var(--bg);
 }
 
-/* on phones, shorten the hero so the next section's giant
-   "Hey, I am Magan." peeks from the bottom of the viewport. */
+/* on phones, hero takes the full viewport — no peek of next section. */
 @media (max-width: 720px) {
   .hero-brutalist {
-    min-height: 76svh;
+    min-height: 100svh;
   }
 }
 
@@ -326,10 +325,11 @@ html.lenis body {
   transform: translateY(-0.08em); /* optical alignment of the middle-dot */
 }
 
-/* MOBILE (<720px): stacked, left-aligned, big.
-   each word gets its own line, no dot separators.
-   The widest line is "product" (7 chars × ~0.95em ≈ 6.65em). At 13vw font,
-   that's ~88% of the viewport — fits comfortably with a 22 px gutter. */
+/* MOBILE (<720px): stacked, left-aligned, MASSIVE.
+   Each word gets its own line with a visible breathing gap between lines.
+   widest word "product" (~3.5em wide with current tracking) at 20vw font
+   ≈ 70vw width — fits inside calc(100vw - 44px) gutter at every common
+   phone width (320, 360, 375, 390, 414, 430). */
 @media (max-width: 720px) {
   .hero-quote {
     /* break out of flex-row + centered baseline */
@@ -338,20 +338,23 @@ html.lenis body {
     justify-content: center;
     text-align: left;
     white-space: nowrap;
-    gap: 0.02em;
+
+    /* visible gap between the three stacked words */
+    gap: 0.18em;
 
     /* anchor to the left edge with a comfortable gutter
-       (overrides the desktop translate(-50%, -50%) centering) */
+       (overrides the desktop centering) */
     left: max(22px, 6vw);
     top: 50%;
     transform: translateY(-50%);
     width: auto;
     max-width: calc(100vw - 44px);
 
-    font-size: clamp(2.4rem, 13vw, 4.8rem);
+    /* much bigger — fills the viewport */
+    font-size: clamp(3.5rem, 20vw, 8rem);
     letter-spacing: -0.045em;
     word-spacing: 0;
-    line-height: 0.95;
+    line-height: 0.9;
   }
 
   /* drop the · separators on mobile */
@@ -398,11 +401,11 @@ html.lenis body {
   letter-spacing: -0.028em;
 }
 
-/* on mobile, pull the intro section much closer to the hero
-   so the greeting peeks from below */
+/* on mobile, give the intro section comfortable breathing room from the top —
+   we no longer want the greeting to peek from below the hero. */
 @media (max-width: 720px) {
   #intro {
-    padding-top: 36px !important;
+    padding-top: 96px !important;
   }
 }
 
