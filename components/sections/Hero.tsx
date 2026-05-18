@@ -25,15 +25,15 @@ export default function Hero() {
           delay: 0.25,
         }}
       >
-        <span className="word">product</span>
+        <span className="word word--orange">product</span>
         <span className="sep" aria-hidden>
           ·
         </span>
-        <span className="word">design</span>
+        <span className="word word--pink">design</span>
         <span className="sep" aria-hidden>
           ·
         </span>
-        <span className="word">build</span>
+        <span className="word word--blue">build</span>
       </motion.h1>
 
       <motion.div

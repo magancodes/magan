@@ -16,7 +16,7 @@ export default function Intro() {
       {/* the giant moment: serif, titlecase, light weight, dominates the column */}
       <SplitTextReveal
         as="h1"
-        className="intro-greeting"
+        className="intro-greeting accent--orange"
         text={"Hey, I am Magan."}
         splitBy="word"
         stagger={0.06}

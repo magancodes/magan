@@ -15,7 +15,7 @@ export default function Philosophy() {
 
       <SplitTextReveal
         as="h2"
-        className="section-title"
+        className="section-title accent--pink"
         text={"chaos wastes human potential."}
         splitBy="word"
         stagger={0.05}

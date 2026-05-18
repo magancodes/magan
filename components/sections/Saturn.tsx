@@ -23,7 +23,7 @@ export default function Saturn() {
 
       <SplitTextReveal
         as="h2"
-        className="section-title"
+        className="section-title accent--pink"
         text={"some problems don\u2019t come with job descriptions."}
         splitBy="word"
         stagger={0.04}

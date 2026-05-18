@@ -13,7 +13,7 @@ export default function InterIIT() {
         </p>
       </Reveal>
 
-      <div className="section-title">
+      <div className="section-title accent--blue">
         <SplitTextReveal
           as="span"
           className="block"

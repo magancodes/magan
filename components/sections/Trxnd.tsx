@@ -42,7 +42,7 @@ export default function Trxnd() {
 
       <SplitTextReveal
         as="h2"
-        className="section-title"
+        className="section-title accent--orange"
         text={"distribution is a system, not a vibe."}
         splitBy="word"
         stagger={0.04}

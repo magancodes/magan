@@ -73,12 +73,17 @@
 
   --line: rgba(240, 229, 199, 0.12);
 
-  /* deep red-orange used for the hero quote overlay.
-     - on cream #F0E5C7  → ~4.3:1 contrast (large-text AA pass with margin)
-     - on slate #0E1117  → ~3.5:1 contrast (large-text AA pass with margin)
-     this hue intentionally sits in the middle band so it reads on both
-     the warm pale blocks and the slaty bg without flipping luminance. */
+  /* deep red-orange — still used by nav hover, selection, etc. */
   --rust: #c53219;
+
+  /* hero quote palette: three editorial accents that sit comfortably
+     on the slate bg. each is well above AAA contrast for large text.
+       - orange : warm, vivid, leads the eye
+       - pink   : dusty rose, second-line softness
+       - blue   : powder blue, cool resolve */
+  --hero-orange: #f58a3f;
+  --hero-pink: #e89dae;
+  --hero-blue: #9cc6e8;
 
   /* serif stack: Tobias upright + italic from local files */
   --font-serif: "Tobias", "Rhymes", "Cormorant Garamond", "Canela",
@@ -167,6 +172,19 @@ html.lenis body {
   letter-spacing: -0.02em;
   font-size: clamp(2rem, 4.6vw, 4rem);
   color: var(--primary);
+}
+
+/* editorial accent palette for section headings + intro greeting.
+   share the same hues as the hero quote so the page reads as one
+   visual system. */
+.accent--orange {
+  color: var(--hero-orange);
+}
+.accent--pink {
+  color: var(--hero-pink);
+}
+.accent--blue {
+  color: var(--hero-blue);
 }
 
 .intro-name {
@@ -299,7 +317,6 @@ html.lenis body {
   font-family: var(--font-serif);
   font-weight: 600;
   font-style: normal;
-  color: var(--rust);
 
   /* MUCH bigger: caps at 6.5rem (104 px). natural line width with the
      tightened spacing below is ~17.8em, so 5vw × 17.8 = ~89% of viewport →
@@ -311,8 +328,6 @@ html.lenis body {
 
   text-rendering: geometricPrecision;
   -webkit-font-smoothing: antialiased;
-  -webkit-text-stroke: 0.45px var(--rust);
-  paint-order: stroke fill;
 }
 
 .hero-quote .word,
@@ -320,8 +335,21 @@ html.lenis body {
   display: inline-block;
 }
 
+/* tri-color editorial palette per word */
+.hero-quote .word--orange {
+  color: var(--hero-orange);
+}
+.hero-quote .word--pink {
+  color: var(--hero-pink);
+}
+.hero-quote .word--blue {
+  color: var(--hero-blue);
+}
+
+/* dot separators stay neutral so the three accent colors lead */
 .hero-quote .sep {
-  opacity: 0.92;
+  color: var(--secondary);
+  opacity: 0.55;
   transform: translateY(-0.08em); /* optical alignment of the middle-dot */
 }
 
@@ -587,12 +615,14 @@ html.lenis body {
   align-items: baseline;
   gap: 18px;
   text-decoration: none;
-  font-family: var(--font-serif);
-  font-weight: 300;
+  /* Gilroy on mobile — sans-serif feels more native for nav UI. */
+  font-family: var(--font-sans);
+  font-weight: 400;
   color: var(--primary);
   font-size: clamp(2rem, 10vw, 3.6rem);
   line-height: 1;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.015em;
+  text-transform: lowercase;
   transition: color 220ms ease;
 }
 
