@@ -10,24 +10,21 @@ import clsx from "@/lib/clsx";
 
 const PIXEL_ICON = { shapeRendering: "crispEdges" as const };
 
-function PixelSettingsIcon() {
+function HeroSettingsIcon() {
   return (
     <span className="oximy-section-icon oximy-hero-icon" aria-hidden>
-      <svg width={28} height={28} viewBox="0 0 12 12" fill="currentColor" {...PIXEL_ICON}>
-        <rect x="4" y="0" width="4" height="1" />
-        <rect x="2" y="1" width="2" height="1" />
-        <rect x="8" y="1" width="2" height="1" />
-        <rect x="0" y="2" width="1" height="2" />
-        <rect x="11" y="2" width="1" height="2" />
-        <rect x="1" y="4" width="1" height="4" />
-        <rect x="10" y="4" width="1" height="4" />
-        <rect x="2" y="9" width="2" height="1" />
-        <rect x="8" y="9" width="2" height="1" />
-        <rect x="4" y="10" width="4" height="1" />
-        <rect x="0" y="6" width="1" height="2" />
-        <rect x="11" y="6" width="1" height="2" />
-        <rect x="4" y="4" width="4" height="4" />
-        <rect x="5" y="5" width="2" height="2" fill="var(--bg)" />
+      <svg
+        width={28}
+        height={28}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+        <circle cx="12" cy="12" r="3" />
       </svg>
     </span>
   );
@@ -75,6 +72,28 @@ function PixelStarIcon() {
         <rect x="2" y="6" width="2" height="2" />
         <rect x="6" y="6" width="2" height="2" />
         <rect x="4" y="8" width="2" height="2" />
+      </svg>
+    </span>
+  );
+}
+
+function PixelNetworkIcon() {
+  return (
+    <span className="oximy-section-icon" aria-hidden>
+      <svg width={22} height={22} viewBox="0 0 10 10" fill="currentColor" {...PIXEL_ICON}>
+        <rect x="4" y="4" width="2" height="2" />
+        <rect x="1" y="1" width="2" height="2" />
+        <rect x="7" y="1" width="2" height="2" />
+        <rect x="1" y="7" width="2" height="2" />
+        <rect x="7" y="7" width="2" height="2" />
+        <rect x="3" y="2" width="2" height="1" />
+        <rect x="5" y="2" width="2" height="1" />
+        <rect x="2" y="3" width="1" height="2" />
+        <rect x="7" y="3" width="1" height="2" />
+        <rect x="2" y="5" width="1" height="2" />
+        <rect x="7" y="5" width="1" height="2" />
+        <rect x="3" y="7" width="2" height="1" />
+        <rect x="5" y="7" width="2" height="1" />
       </svg>
     </span>
   );
@@ -168,18 +187,18 @@ function PhaseCard({ num, title, titleIcon, timeline, accent, children }: PhaseC
       className="flex h-full flex-col"
       style={{
         border: "1px solid var(--line)",
-        padding: "clamp(14px, 1.4vw, 20px)",
+        padding: "clamp(10px, 1.1vw, 14px)",
         background: "rgba(240, 229, 199, 0.02)",
       }}
     >
-      <header className="mb-3 shrink-0">
-        <p className="meta" style={{ marginBottom: 8, fontSize: 11 }}>
-          {timeline ? `${num} — ${timeline}` : num}
+      <header className="mb-2 shrink-0">
+        <p className="meta" style={{ marginBottom: 4, fontSize: 10 }}>
+          {timeline ? `${num} - ${timeline}` : num}
         </p>
         <h3
           className={clsx("oximy-phase-title", accent)}
           style={{
-            fontSize: "clamp(15px, 1.1vw, 18px)",
+            fontSize: "clamp(13px, 0.95vw, 16px)",
             lineHeight: 1.15,
           }}
         >
@@ -188,12 +207,12 @@ function PhaseCard({ num, title, titleIcon, timeline, accent, children }: PhaseC
         </h3>
       </header>
       <div
-        className="min-h-0 flex-1 space-y-3"
+        className="min-h-0 flex-1 space-y-1.5"
         style={{
           fontFamily: "var(--font-sans)",
           fontWeight: 200,
-          fontSize: "clamp(11px, 0.78vw, 13px)",
-          lineHeight: 1.45,
+          fontSize: "clamp(10px, 0.72vw, 12px)",
+          lineHeight: 1.38,
           color: "var(--primary)",
         }}
       >
@@ -207,7 +226,7 @@ function PhaseLabel({ children }: { children: React.ReactNode }) {
   return (
     <p
       className="meta"
-      style={{ fontSize: 10, marginTop: 8, marginBottom: 4, letterSpacing: "0.06em" }}
+      style={{ fontSize: 9, marginTop: 5, marginBottom: 2, letterSpacing: "0.06em" }}
     >
       {children}
     </p>
@@ -216,13 +235,13 @@ function PhaseLabel({ children }: { children: React.ReactNode }) {
 
 function PhaseList({ items }: { items: string[] }) {
   return (
-    <ul style={{ listStyle: "none", padding: 0, margin: 0 }} className="space-y-1">
+    <ul style={{ listStyle: "none", padding: 0, margin: 0 }} className="space-y-0.5">
       {items.map((item) => (
         <li
           key={item}
           style={{
             borderLeft: "1px solid var(--line)",
-            paddingLeft: 8,
+            paddingLeft: 6,
             color: "var(--secondary)",
           }}
         >
@@ -266,7 +285,7 @@ function OximyLogo() {
       height={123}
       priority
       onError={() => setFailed(true)}
-      style={{ height: "auto", width: "clamp(120px, 18vw, 160px)" }}
+      style={{ height: "auto", width: "clamp(160px, 24vw, 220px)", display: "block" }}
     />
   );
 }
@@ -281,17 +300,16 @@ export default function OximyGtmPage() {
           paddingTop: 96,
         }}
       >
-        <div
-          className="flex flex-wrap items-center justify-between gap-6"
-          style={{ maxWidth: 960 }}
-        >
+        <div style={{ maxWidth: 960 }}>
           <Reveal y={12} blur={6}>
             <OximyLogo />
           </Reveal>
           <Reveal delay={0.08}>
-            <Link href="/" className="cta-button" data-cursor="link">
-              ← back to portfolio
-            </Link>
+            <div className="mt-6 flex justify-end">
+              <Link href="/" className="cta-button" data-cursor="link">
+                ← back to portfolio
+              </Link>
+            </div>
           </Reveal>
         </div>
       </header>
@@ -305,7 +323,7 @@ export default function OximyGtmPage() {
 
         <div className="oximy-heading-row">
           <Reveal y={18} blur={10}>
-            <PixelSettingsIcon />
+            <HeroSettingsIcon />
           </Reveal>
           <SplitTextReveal
             as="h1"
@@ -326,9 +344,125 @@ export default function OximyGtmPage() {
               maxWidth: 560,
             }}
           >
-            an intelligence and distribution system for AI security — not a
+            an intelligence and distribution system for AI security, not a
             traditional sales playbook.
           </p>
+        </Reveal>
+      </Column>
+
+      <Column as="section" topPad={100} id="unfair-advantage">
+        <Reveal>
+          <p className="meta" style={{ marginBottom: 16 }}>
+            unfair advantage
+          </p>
+        </Reveal>
+
+        <Reveal delay={0.04}>
+          <SectionHeading
+            icon={<PixelNetworkIcon />}
+            className="section-title accent--orange"
+            style={{ fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)" }}
+          >
+            the network I have is what you need.
+          </SectionHeading>
+        </Reveal>
+
+        <Reveal delay={0.1}>
+          <SectionHeading
+            icon={<PixelMapIcon />}
+            className="section-title accent--blue"
+            style={{
+              fontSize: "clamp(1.35rem, 2.4vw, 2rem)",
+              marginTop: "clamp(2rem, 4vw, 3rem)",
+            }}
+          >
+            I already operate in the environments Oximy needs
+          </SectionHeading>
+        </Reveal>
+
+        <Reveal delay={0.14}>
+          <p className="body-text mt-10">I&apos;m already close to:</p>
+        </Reveal>
+
+        <Reveal delay={0.16}>
+          <ul className="body-text mt-6 space-y-3" style={{ listStyle: "none", padding: 0 }}>
+            {[
+              "founders",
+              "operators",
+              "engineers",
+              "AI builders",
+              "startup ecosystems",
+              "IIT networks",
+              "fast-moving product teams",
+            ].map((item) => (
+              <li
+                key={item}
+                style={{
+                  borderLeft: "1px solid var(--line)",
+                  paddingLeft: 14,
+                }}
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+
+        <Reveal delay={0.2}>
+          <p className="body-text mt-10">
+            Inter IIT Tech Meet gave me exposure to high-pressure coordination at
+            scale:
+          </p>
+        </Reveal>
+
+        <Reveal delay={0.22}>
+          <ul className="body-text mt-6 space-y-3" style={{ listStyle: "none", padding: 0 }}>
+            {[
+              "23 IITs",
+              "2000+ participants",
+              "₹1Cr+ operations",
+              "partnerships across major orgs",
+            ].map((item) => (
+              <li
+                key={item}
+                style={{
+                  borderLeft: "1px solid var(--line)",
+                  paddingLeft: 14,
+                }}
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+
+        <Reveal delay={0.26}>
+          <p className="body-text mt-10">That experience taught me how to:</p>
+        </Reveal>
+
+        <Reveal delay={0.28}>
+          <ul className="body-text mt-6 space-y-3" style={{ listStyle: "none", padding: 0 }}>
+            {[
+              "manage chaos",
+              "align people quickly",
+              "execute under pressure",
+              "communicate across technical and non-technical stakeholders",
+            ].map((item) => (
+              <li
+                key={item}
+                style={{
+                  borderLeft: "1px solid var(--line)",
+                  paddingLeft: 14,
+                }}
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+
+        <Reveal delay={0.32}>
+          <p className="body-text mt-10">All useful for enterprise GTM in India.</p>
         </Reveal>
       </Column>
 
@@ -423,9 +557,9 @@ export default function OximyGtmPage() {
             </SectionHeading>
           </Reveal>
 
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 xl:items-stretch">
+          <div className="oximy-phase-bento">
 
-            <Reveal delay={0.04}>
+            <Reveal delay={0.04} className="oximy-phase-bento__cell oximy-phase-bento__cell--1">
               <PhaseCard
                 num="phase 1"
                 title="Build the signal map"
@@ -477,7 +611,7 @@ export default function OximyGtmPage() {
               </PhaseCard>
             </Reveal>
 
-            <Reveal delay={0.08}>
+            <Reveal delay={0.08} className="oximy-phase-bento__cell oximy-phase-bento__cell--2">
               <PhaseCard
                 num="phase 2"
                 title="Build outbound that doesn't feel like outbound"
@@ -529,7 +663,7 @@ export default function OximyGtmPage() {
               </PhaseCard>
             </Reveal>
 
-            <Reveal delay={0.12}>
+            <Reveal delay={0.12} className="oximy-phase-bento__cell oximy-phase-bento__cell--3">
               <PhaseCard
                 num="phase 3"
                 title="Win the meetings"
@@ -567,7 +701,7 @@ export default function OximyGtmPage() {
                     fontSize: "inherit",
                     lineHeight: 1.45,
                     color: "var(--primary)",
-                    margin: "6px 0 0",
+                    margin: "4px 0 0",
                   }}
                 >
                   Get on a call with me and see.
@@ -575,7 +709,7 @@ export default function OximyGtmPage() {
               </PhaseCard>
             </Reveal>
 
-            <Reveal delay={0.16}>
+            <Reveal delay={0.16} className="oximy-phase-bento__cell oximy-phase-bento__cell--4">
               <PhaseCard
                 num="phase 4"
                 title="Build narrative and ecosystem presence"
@@ -624,7 +758,7 @@ export default function OximyGtmPage() {
               </PhaseCard>
             </Reveal>
 
-            <Reveal delay={0.2}>
+            <Reveal delay={0.2} className="oximy-phase-bento__cell oximy-phase-bento__cell--5">
               <PhaseCard
                 num="phase 5"
                 title="Turn GTM into infrastructure"
