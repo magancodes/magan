@@ -184,7 +184,7 @@ type PhaseCardProps = {
 function PhaseCard({ num, title, titleIcon, timeline, accent, children }: PhaseCardProps) {
   return (
     <article
-      className="flex h-full flex-col"
+      className="flex flex-col"
       style={{
         border: "1px solid var(--line)",
         padding: "clamp(10px, 1.1vw, 14px)",
@@ -207,7 +207,7 @@ function PhaseCard({ num, title, titleIcon, timeline, accent, children }: PhaseC
         </h3>
       </header>
       <div
-        className="min-h-0 flex-1 space-y-1.5"
+        className="space-y-1.5"
         style={{
           fontFamily: "var(--font-sans)",
           fontWeight: 200,
@@ -410,59 +410,9 @@ export default function OximyGtmPage() {
 
         <Reveal delay={0.2}>
           <p className="body-text mt-10">
-            Inter IIT Tech Meet gave me exposure to high-pressure coordination at
-            scale:
+            Inter IIT Tech Meet gave me access to companies and a network across
+            all 23 IITs. Real relationships, not just campus visibility.
           </p>
-        </Reveal>
-
-        <Reveal delay={0.22}>
-          <ul className="body-text mt-6 space-y-3" style={{ listStyle: "none", padding: 0 }}>
-            {[
-              "23 IITs",
-              "2000+ participants",
-              "₹1Cr+ operations",
-              "partnerships across major orgs",
-            ].map((item) => (
-              <li
-                key={item}
-                style={{
-                  borderLeft: "1px solid var(--line)",
-                  paddingLeft: 14,
-                }}
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
-        </Reveal>
-
-        <Reveal delay={0.26}>
-          <p className="body-text mt-10">That experience taught me how to:</p>
-        </Reveal>
-
-        <Reveal delay={0.28}>
-          <ul className="body-text mt-6 space-y-3" style={{ listStyle: "none", padding: 0 }}>
-            {[
-              "manage chaos",
-              "align people quickly",
-              "execute under pressure",
-              "communicate across technical and non-technical stakeholders",
-            ].map((item) => (
-              <li
-                key={item}
-                style={{
-                  borderLeft: "1px solid var(--line)",
-                  paddingLeft: 14,
-                }}
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
-        </Reveal>
-
-        <Reveal delay={0.32}>
-          <p className="body-text mt-10">All useful for enterprise GTM in India.</p>
         </Reveal>
       </Column>
 
@@ -557,9 +507,9 @@ export default function OximyGtmPage() {
             </SectionHeading>
           </Reveal>
 
-          <div className="oximy-phase-bento">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 xl:items-stretch">
 
-            <Reveal delay={0.04} className="oximy-phase-bento__cell oximy-phase-bento__cell--1">
+            <Reveal delay={0.04}>
               <PhaseCard
                 num="phase 1"
                 title="Build the signal map"
@@ -611,7 +561,7 @@ export default function OximyGtmPage() {
               </PhaseCard>
             </Reveal>
 
-            <Reveal delay={0.08} className="oximy-phase-bento__cell oximy-phase-bento__cell--2">
+            <Reveal delay={0.08}>
               <PhaseCard
                 num="phase 2"
                 title="Build outbound that doesn't feel like outbound"
@@ -663,7 +613,7 @@ export default function OximyGtmPage() {
               </PhaseCard>
             </Reveal>
 
-            <Reveal delay={0.12} className="oximy-phase-bento__cell oximy-phase-bento__cell--3">
+            <Reveal delay={0.12}>
               <PhaseCard
                 num="phase 3"
                 title="Win the meetings"
@@ -709,7 +659,7 @@ export default function OximyGtmPage() {
               </PhaseCard>
             </Reveal>
 
-            <Reveal delay={0.16} className="oximy-phase-bento__cell oximy-phase-bento__cell--4">
+            <Reveal delay={0.16}>
               <PhaseCard
                 num="phase 4"
                 title="Build narrative and ecosystem presence"
@@ -758,7 +708,7 @@ export default function OximyGtmPage() {
               </PhaseCard>
             </Reveal>
 
-            <Reveal delay={0.2} className="oximy-phase-bento__cell oximy-phase-bento__cell--5">
+            <Reveal delay={0.2}>
               <PhaseCard
                 num="phase 5"
                 title="Turn GTM into infrastructure"
