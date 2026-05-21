@@ -60,6 +60,26 @@
   font-display: swap;
 }
 
+/* PP Bitmap — bitmap display (PPBitmap if licensed, else PPMondwest) */
+@font-face {
+  font-family: "PP Bitmap";
+  src: url("/fonts/PPBitmap-Regular.otf") format("opentype"),
+       url("/fonts/PPBitmap-Regular.woff2") format("woff2"),
+       url("/fonts/PPMondwest-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* PP Mondwest — loaded bitmap fallback when PP Bitmap is not yet licensed */
+@font-face {
+  font-family: "PP Mondwest";
+  src: url("/fonts/PPMondwest-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   /* slaty dark — a touch lighter than pure black with a faint blue undertone */
   --bg: #0e1117;
@@ -75,6 +95,10 @@
 
   /* deep red-orange — still used by nav hover, selection, etc. */
   --rust: #c53219;
+  --orange-dark: #c45a00;
+
+  /* bitmap display stack for oximy-gtm headings */
+  --font-ppbitmap: "PP Bitmap", "PP Mondwest", monospace;
 
   /* hero quote palette: three editorial accents that sit comfortably
      on the slate bg. each is well above AAA contrast for large text.
@@ -82,8 +106,11 @@
        - pink   : dusty rose, second-line softness
        - blue   : powder blue, cool resolve */
   --hero-orange: #f58a3f;
+  --hero-orange-dark: #c45a00;
   --hero-pink: #e89dae;
   --hero-blue: #9cc6e8;
+
+  --font-bitmap: "PP Bitmap", "Courier New", monospace;
 
   /* serif stack: Tobias upright + italic from local files */
   --font-serif: "Tobias", "Rhymes", "Cormorant Garamond", "Canela",
@@ -823,4 +850,69 @@ html.lenis body {
   opacity: 0;
   filter: blur(8px);
   transform: translateY(14px);
+}
+
+/* ---------------------------------------------------
+   OXIMY GTM — bitmap hero + section icons
+--------------------------------------------------- */
+.oximy-gtm #hero .hero-bitmap-title {
+  font-family: var(--font-ppbitmap);
+  font-weight: 400;
+  font-style: normal;
+  color: var(--hero-orange-dark);
+  letter-spacing: 0.04em;
+  line-height: 1.12;
+  text-transform: lowercase;
+}
+
+.oximy-gtm .oximy-phase-title {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+}
+
+.oximy-gtm .bitmap-accent-line {
+  font-family: var(--font-ppbitmap);
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0.03em;
+}
+
+.oximy-gtm .oximy-section-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: currentColor;
+}
+
+.oximy-gtm .oximy-section-icon svg {
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.oximy-gtm .oximy-heading-row {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(12px, 2vw, 20px);
+}
+
+.oximy-gtm .oximy-hero-icon {
+  margin-top: 0.35em;
+  color: var(--hero-orange-dark);
+}
+
+.oximy-gtm .oximy-section-heading {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(10px, 1.6vw, 16px);
+  flex-wrap: wrap;
+}
+
+.oximy-gtm .oximy-phase-icon {
+  display: inline-block;
+  margin-right: 6px;
+  vertical-align: -0.12em;
+  color: inherit;
 }

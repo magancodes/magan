@@ -8,101 +8,234 @@ import Reveal from "@/components/Reveal";
 import SplitTextReveal from "@/components/SplitTextReveal";
 import clsx from "@/lib/clsx";
 
-type GridCardProps = {
-  title: string;
-  children: React.ReactNode;
-  className?: string;
-};
+const PIXEL_ICON = { shapeRendering: "crispEdges" as const };
 
-function GridCard({ title, children, className }: GridCardProps) {
+function PixelSettingsIcon() {
   return (
-    <div
-      className={clsx(
-        "border-t pt-6",
-        className
-      )}
-      style={{ borderColor: "var(--line)" }}
-    >
-      <h3 className="meta mb-4">{title}</h3>
-      <div className="body-text" style={{ maxWidth: "none", fontSize: 15 }}>
-        {children}
-      </div>
-    </div>
+    <span className="oximy-section-icon oximy-hero-icon" aria-hidden>
+      <svg width={28} height={28} viewBox="0 0 12 12" fill="currentColor" {...PIXEL_ICON}>
+        <rect x="4" y="0" width="4" height="1" />
+        <rect x="2" y="1" width="2" height="1" />
+        <rect x="8" y="1" width="2" height="1" />
+        <rect x="0" y="2" width="1" height="2" />
+        <rect x="11" y="2" width="1" height="2" />
+        <rect x="1" y="4" width="1" height="4" />
+        <rect x="10" y="4" width="1" height="4" />
+        <rect x="2" y="9" width="2" height="1" />
+        <rect x="8" y="9" width="2" height="1" />
+        <rect x="4" y="10" width="4" height="1" />
+        <rect x="0" y="6" width="1" height="2" />
+        <rect x="11" y="6" width="1" height="2" />
+        <rect x="4" y="4" width="4" height="4" />
+        <rect x="5" y="5" width="2" height="2" fill="var(--bg)" />
+      </svg>
+    </span>
   );
 }
 
-type PhaseSectionProps = {
-  id: string;
+function PixelMapIcon() {
+  return (
+    <span className="oximy-section-icon" aria-hidden>
+      <svg width={22} height={22} viewBox="0 0 10 10" fill="currentColor" {...PIXEL_ICON}>
+        <rect x="1" y="1" width="8" height="1" />
+        <rect x="1" y="9" width="8" height="1" />
+        <rect x="1" y="1" width="1" height="9" />
+        <rect x="8" y="1" width="1" height="9" />
+        <rect x="2" y="2" width="2" height="2" />
+        <rect x="6" y="2" width="2" height="2" />
+        <rect x="4" y="5" width="2" height="2" />
+      </svg>
+    </span>
+  );
+}
+
+function PixelGridIcon() {
+  return (
+    <span className="oximy-section-icon" aria-hidden>
+      <svg width={22} height={22} viewBox="0 0 10 10" fill="currentColor" {...PIXEL_ICON}>
+        <rect x="1" y="1" width="3" height="3" />
+        <rect x="6" y="1" width="3" height="3" />
+        <rect x="1" y="6" width="3" height="3" />
+        <rect x="6" y="6" width="3" height="3" />
+      </svg>
+    </span>
+  );
+}
+
+function PixelStarIcon() {
+  return (
+    <span className="oximy-section-icon" aria-hidden>
+      <svg width={22} height={22} viewBox="0 0 10 10" fill="currentColor" {...PIXEL_ICON}>
+        <rect x="4" y="0" width="2" height="2" />
+        <rect x="2" y="2" width="2" height="2" />
+        <rect x="6" y="2" width="2" height="2" />
+        <rect x="0" y="4" width="2" height="2" />
+        <rect x="4" y="4" width="2" height="2" />
+        <rect x="8" y="4" width="2" height="2" />
+        <rect x="2" y="6" width="2" height="2" />
+        <rect x="6" y="6" width="2" height="2" />
+        <rect x="4" y="8" width="2" height="2" />
+      </svg>
+    </span>
+  );
+}
+
+function PixelPhaseIcon({ variant }: { variant: "signal" | "outbound" | "meet" | "narrative" | "infra" }) {
+  const icons = {
+    signal: (
+      <>
+        <rect x="1" y="4" width="2" height="2" />
+        <rect x="4" y="2" width="2" height="2" />
+        <rect x="7" y="4" width="2" height="2" />
+        <rect x="4" y="6" width="2" height="2" />
+      </>
+    ),
+    outbound: (
+      <>
+        <rect x="1" y="4" width="6" height="2" />
+        <rect x="6" y="3" width="2" height="1" />
+        <rect x="7" y="4" width="2" height="2" />
+        <rect x="6" y="6" width="2" height="1" />
+      </>
+    ),
+    meet: (
+      <>
+        <rect x="2" y="2" width="6" height="5" />
+        <rect x="3" y="7" width="4" height="1" />
+      </>
+    ),
+    narrative: (
+      <>
+        <rect x="1" y="2" width="8" height="1" />
+        <rect x="1" y="4" width="6" height="1" />
+        <rect x="1" y="6" width="8" height="1" />
+      </>
+    ),
+    infra: (
+      <>
+        <rect x="2" y="1" width="6" height="2" />
+        <rect x="1" y="4" width="2" height="5" />
+        <rect x="7" y="4" width="2" height="5" />
+        <rect x="3" y="7" width="4" height="2" />
+      </>
+    ),
+  };
+
+  return (
+    <span className="oximy-phase-icon" aria-hidden>
+      <svg width={14} height={14} viewBox="0 0 10 10" fill="currentColor" {...PIXEL_ICON}>
+        {icons[variant]}
+      </svg>
+    </span>
+  );
+}
+
+function SectionHeading({
+  icon,
+  children,
+  className,
+  style,
+  id,
+}: {
+  icon: React.ReactNode;
+  children: React.ReactNode;
+  className?: string;
+  style?: React.CSSProperties;
+  id?: string;
+}) {
+  return (
+    <h2 id={id} className={className} style={style}>
+      <span className="oximy-section-heading">
+        {icon}
+        <span>{children}</span>
+      </span>
+    </h2>
+  );
+}
+
+type PhaseCardProps = {
   num: string;
   title: string;
-  timeline: string;
+  titleIcon?: React.ReactNode;
+  timeline?: string;
   accent: "accent--orange" | "accent--pink" | "accent--blue";
-  intro?: string;
-  grid: React.ReactNode;
-  body?: React.ReactNode;
+  children: React.ReactNode;
 };
 
-function PhaseSection({
-  id,
-  num,
-  title,
-  timeline,
-  accent,
-  intro,
-  grid,
-  body,
-}: PhaseSectionProps) {
+function PhaseCard({ num, title, titleIcon, timeline, accent, children }: PhaseCardProps) {
   return (
-    <section
-      id={id}
-      aria-labelledby={`${id}-title`}
+    <article
+      className="flex h-full flex-col"
       style={{
-        paddingLeft: "max(18vw, 28px)",
-        paddingRight: "max(6vw, 24px)",
-        paddingTop: 120,
+        border: "1px solid var(--line)",
+        padding: "clamp(14px, 1.4vw, 20px)",
+        background: "rgba(240, 229, 199, 0.02)",
       }}
     >
-      <div style={{ maxWidth: 960 }}>
-        <Reveal y={18} blur={10}>
-          <p className="meta" style={{ marginBottom: 22 }}>
-            {num} — {timeline}
-          </p>
-        </Reveal>
-
-        <div id={`${id}-title`}>
-          <SplitTextReveal
-            as="h2"
-            className={clsx("section-title", accent)}
-            text={title}
-            splitBy="word"
-            stagger={0.04}
-          />
-        </div>
-
-        {intro && (
-          <Reveal delay={0.12}>
-            <p className="body-text mt-10" style={{ maxWidth: 560 }}>
-              {intro}
-            </p>
-          </Reveal>
-        )}
-
-        <div
-          className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2"
-          style={{ maxWidth: 960 }}
+      <header className="mb-3 shrink-0">
+        <p className="meta" style={{ marginBottom: 8, fontSize: 11 }}>
+          {timeline ? `${num} — ${timeline}` : num}
+        </p>
+        <h3
+          className={clsx("oximy-phase-title", accent)}
+          style={{
+            fontSize: "clamp(15px, 1.1vw, 18px)",
+            lineHeight: 1.15,
+          }}
         >
-          {grid}
-        </div>
-
-        {body && (
-          <Reveal delay={0.2}>
-            <div className="mt-12 space-y-7" style={{ maxWidth: 560 }}>
-              {body}
-            </div>
-          </Reveal>
-        )}
+          {titleIcon}
+          {title}
+        </h3>
+      </header>
+      <div
+        className="min-h-0 flex-1 space-y-3"
+        style={{
+          fontFamily: "var(--font-sans)",
+          fontWeight: 200,
+          fontSize: "clamp(11px, 0.78vw, 13px)",
+          lineHeight: 1.45,
+          color: "var(--primary)",
+        }}
+      >
+        {children}
       </div>
-    </section>
+    </article>
+  );
+}
+
+function PhaseLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <p
+      className="meta"
+      style={{ fontSize: 10, marginTop: 8, marginBottom: 4, letterSpacing: "0.06em" }}
+    >
+      {children}
+    </p>
+  );
+}
+
+function PhaseList({ items }: { items: string[] }) {
+  return (
+    <ul style={{ listStyle: "none", padding: 0, margin: 0 }} className="space-y-1">
+      {items.map((item) => (
+        <li
+          key={item}
+          style={{
+            borderLeft: "1px solid var(--line)",
+            paddingLeft: 8,
+            color: "var(--secondary)",
+          }}
+        >
+          {item}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function PhaseP({ children, muted }: { children: React.ReactNode; muted?: boolean }) {
+  return (
+    <p style={{ color: muted ? "var(--secondary)" : undefined, margin: 0 }}>{children}</p>
   );
 }
 
@@ -127,10 +260,10 @@ function OximyLogo() {
 
   return (
     <Image
-      src="/oximy-logo.svg"
+      src="/oximy-logo.png"
       alt="Oximy"
-      width={160}
-      height={40}
+      width={393}
+      height={123}
       priority
       onError={() => setFailed(true)}
       style={{ height: "auto", width: "clamp(120px, 18vw, 160px)" }}
@@ -140,7 +273,7 @@ function OximyLogo() {
 
 export default function OximyGtmPage() {
   return (
-    <main className="relative pb-32">
+    <main className="oximy-gtm relative pb-32">
       <header
         style={{
           paddingLeft: "max(18vw, 28px)",
@@ -170,23 +303,24 @@ export default function OximyGtmPage() {
           </p>
         </Reveal>
 
-        <SplitTextReveal
-          as="h1"
-          className="section-title accent--orange"
-          text={"build intelligence before you scale outreach."}
-          splitBy="word"
-          stagger={0.05}
-        />
+        <div className="oximy-heading-row">
+          <Reveal y={18} blur={10}>
+            <PixelSettingsIcon />
+          </Reveal>
+          <SplitTextReveal
+            as="h1"
+            className="section-title hero-bitmap-title min-w-0 flex-1"
+            text={"build intelligence before you scale outreach."}
+            splitBy="word"
+            stagger={0.05}
+          />
+        </div>
 
         <Reveal delay={0.2}>
           <p
-            className="mt-10"
+            className="bitmap-accent-line mt-10"
             style={{
-              fontFamily: "var(--font-serif)",
-              fontStyle: "italic",
-              fontWeight: 300,
               fontSize: "clamp(17px, 1.4vw, 22px)",
-              letterSpacing: "0.005em",
               color: "var(--secondary)",
               lineHeight: 1.45,
               maxWidth: 560,
@@ -200,14 +334,23 @@ export default function OximyGtmPage() {
 
       <Column as="section" topPad={100} id="intro">
         <Reveal>
-          <h2 className="section-title accent--blue" style={{ fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)" }}>
+          <SectionHeading
+            icon={<PixelMapIcon />}
+            className="section-title accent--blue"
+            style={{ fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)" }}
+          >
             How I&apos;d build GTM for Oximy
-          </h2>
+          </SectionHeading>
         </Reveal>
 
         <Reveal delay={0.1}>
           <p className="body-text mt-10">
             I wouldn&apos;t approach this like a traditional sales process.
+          </p>
+        </Reveal>
+
+        <Reveal delay={0.12}>
+          <p className="body-text mt-7">
             I&apos;d approach it like building an intelligence and distribution
             system around AI security.
           </p>
@@ -216,9 +359,11 @@ export default function OximyGtmPage() {
         <Reveal delay={0.16}>
           <p className="body-text mt-7">
             The goal early on is not &ldquo;scale outreach.&rdquo;
-            <br />
-            The goal is:
           </p>
+        </Reveal>
+
+        <Reveal delay={0.18}>
+          <p className="body-text mt-7">The goal is:</p>
         </Reveal>
 
         <Reveal delay={0.22}>
@@ -246,350 +391,534 @@ export default function OximyGtmPage() {
         <Reveal delay={0.3}>
           <p className="body-text mt-10">
             Most AI companies are still figuring things out internally.
-            That&apos;s the opportunity.
           </p>
+        </Reveal>
+
+        <Reveal delay={0.32}>
+          <p className="body-text mt-7">That&apos;s the opportunity.</p>
         </Reveal>
       </Column>
 
-      <PhaseSection
-        id="phase-1"
-        num="phase 1"
-        title="build the signal map."
-        timeline="first 2–3 weeks"
-        accent="accent--pink"
-        intro="Before any outbound, I'd build a live map of where AI adoption and security friction are converging — so every conversation starts from real context, not a list."
-        grid={
-          <>
-            <Reveal delay={0.08}>
-              <GridCard title="what I'd track">
-                <ul className="space-y-2 muted" style={{ listStyle: "none", padding: 0 }}>
-                  {[
-                    "new AI tool rollouts at mid-market and enterprise companies",
-                    "security incidents tied to shadow AI or unsanctioned LLM use",
-                    "job postings for AI security, AI governance, and ML platform roles",
-                    "compliance triggers — EU AI Act, SOC2 AI addenda, internal audit cycles",
-                    "funding and product launches in AI-native categories",
-                    "open-source and community momentum around AI security tooling",
-                  ].map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </GridCard>
-            </Reveal>
-            <Reveal delay={0.14}>
-              <GridCard title="regions">
-                <ul className="space-y-2 muted" style={{ listStyle: "none", padding: 0 }}>
-                  {[
-                    "US West — SF, Seattle: earliest adopters, highest tool velocity",
-                    "US East — NYC, Boston: regulated finance, security-first buyers",
-                    "UK / EU — compliance-driven procurement, longer cycles but strong fit",
-                    "India — engineering hubs and offshore security teams influencing US/EU stacks",
-                  ].map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </GridCard>
-            </Reveal>
-          </>
-        }
-        body={
-          <>
-            <p className="body-text">
-              This becomes a live ecosystem map — updated weekly, not a static
-              ICP doc. Signals get scored by urgency: active pain beats
-              theoretical interest.
+      <section
+        id="plan"
+        aria-labelledby="plan-title"
+        style={{
+          paddingLeft: "max(4vw, 20px)",
+          paddingRight: "max(4vw, 20px)",
+          paddingTop: 80,
+        }}
+      >
+        <div style={{ maxWidth: 1440, margin: "0 auto" }}>
+          <Reveal>
+            <p className="meta" style={{ marginBottom: 16 }}>
+              the plan
             </p>
-            <p className="body-text muted">
-              What this creates: a prioritized queue of accounts and people where
-              Oximy can show up with context. Outreach stops being cold because
-              the research already happened.
-            </p>
-          </>
-        }
-      />
+            <SectionHeading
+              id="plan-title"
+              icon={<PixelGridIcon />}
+              className="section-title accent--pink"
+              style={{ fontSize: "clamp(1.5rem, 2.8vw, 2.25rem)", marginBottom: 24 }}
+            >
+              five phases. one system.
+            </SectionHeading>
+          </Reveal>
 
-      <PhaseSection
-        id="phase-2"
-        num="phase 2"
-        title="outbound that doesn't feel like outbound."
-        timeline="weeks 3–6"
-        accent="accent--orange"
-        intro="Once the signal map exists, distribution becomes surgical — warm intros, technical relevance, and channels where security people actually pay attention."
-        grid={
-          <>
-            <Reveal delay={0.08}>
-              <GridCard title="focus areas">
-                <ul className="space-y-2 muted" style={{ listStyle: "none", padding: 0 }}>
-                  {[
-                    "security engineers evaluating AI tooling and data flows",
-                    "CISO offices building AI governance programs from scratch",
-                    "platform teams shipping LLM features without a security review loop",
-                    "DevSecOps leads stuck between velocity and control",
-                  ].map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </GridCard>
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 xl:items-stretch">
+
+            <Reveal delay={0.04}>
+              <PhaseCard
+                num="phase 1"
+                title="Build the signal map"
+                titleIcon={<PixelPhaseIcon variant="signal" />}
+                timeline="first 2–3 weeks"
+                accent="accent--pink"
+              >
+                <PhaseP>
+                  I&apos;d start by building a live ecosystem map around companies
+                  actively deploying AI.
+                </PhaseP>
+                <PhaseP muted>Not random lead lists.</PhaseP>
+                <PhaseP muted>Actual signal.</PhaseP>
+                <PhaseLabel>What I&apos;d track</PhaseLabel>
+                <PhaseList
+                  items={[
+                    "startups shipping AI features",
+                    "companies hiring AI infra/platform/security roles",
+                    "teams talking about governance/compliance",
+                    "startups scaling internal copilots or agents",
+                    "AI-native SaaS companies",
+                    "infra-heavy engineering orgs",
+                    "founders publicly discussing AI workflows",
+                  ]}
+                />
+                <PhaseLabel>Regions</PhaseLabel>
+                <PhaseList
+                  items={[
+                    "SF startups",
+                    "NYC AI ecosystem",
+                    "India AI-native SaaS",
+                    "remote-first AI companies",
+                  ]}
+                />
+                <PhaseLabel>What this creates</PhaseLabel>
+                <PhaseP muted>Instead of blind outbound, we know:</PhaseP>
+                <PhaseList
+                  items={[
+                    "who's moving fast",
+                    "who's under pressure",
+                    "who probably already has security gaps",
+                    "who recently raised",
+                    "who's scaling too quickly for their current infra",
+                  ]}
+                />
+                <PhaseP muted>
+                  That becomes the foundation for everything else.
+                </PhaseP>
+              </PhaseCard>
             </Reveal>
+
+            <Reveal delay={0.08}>
+              <PhaseCard
+                num="phase 2"
+                title="Build outbound that doesn't feel like outbound"
+                titleIcon={<PixelPhaseIcon variant="outbound" />}
+                timeline="weeks 3–6"
+                accent="accent--orange"
+              >
+                <PhaseP>Most outbound fails because it&apos;s generic.</PhaseP>
+                <PhaseP muted>Especially with technical buyers.</PhaseP>
+                <PhaseLabel>I&apos;d focus on:</PhaseLabel>
+                <PhaseList
+                  items={[
+                    "contextual outreach",
+                    "company-specific observations",
+                    "AI workflow discussions",
+                    "infra/security pain points",
+                    "founder/operator-level messaging",
+                  ]}
+                />
+                <PhaseLabel>Not:</PhaseLabel>
+                <PhaseP muted>
+                  &ldquo;Hey, just checking if you&apos;re interested in AI
+                  security.&rdquo;
+                </PhaseP>
+                <PhaseP muted>That gets ignored instantly.</PhaseP>
+                <PhaseLabel>The messaging should feel like:</PhaseLabel>
+                <PhaseList
+                  items={[
+                    "someone who understands their stack",
+                    "understands their velocity",
+                    "and understands what breaks when AI adoption scales too fast",
+                  ]}
+                />
+                <PhaseLabel>Channels</PhaseLabel>
+                <PhaseList
+                  items={[
+                    "LinkedIn",
+                    "X/Twitter",
+                    "email",
+                    "founder circles",
+                    "Reddit signal monitoring",
+                    "engineering communities",
+                    "warm intros through operators and alumni networks",
+                  ]}
+                />
+                <PhaseP muted>The objective isn&apos;t volume.</PhaseP>
+                <PhaseP muted>The objective is:</PhaseP>
+                <PhaseP>book high-quality conversations consistently.</PhaseP>
+              </PhaseCard>
+            </Reveal>
+
             <Reveal delay={0.12}>
-              <GridCard title="not focus areas">
-                <ul className="space-y-2 muted" style={{ listStyle: "none", padding: 0 }}>
-                  {[
-                    "spray-and-pray enterprise lists",
-                    "mass LinkedIn InMail with generic AI security copy",
-                    "conference booth spam without a follow-up system",
-                    "chasing logos that aren't showing adoption signals yet",
-                  ].map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </GridCard>
-            </Reveal>
-            <Reveal delay={0.16}>
-              <GridCard title="channels">
-                <ul className="space-y-2 muted" style={{ listStyle: "none", padding: 0 }}>
-                  {[
-                    "hyper-personalized email tied to a specific signal from the map",
-                    "warm intros through founders, investors, and security communities",
-                    "technical posts and short breakdowns where practitioners gather",
-                    "Slack / Discord / niche forums — participate before pitching",
-                  ].map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </GridCard>
-            </Reveal>
-            <Reveal delay={0.2}>
-              <GridCard title="objective">
-                <p className="muted">
-                  Start qualified conversations — not close deals. Every touch
-                  should answer: &ldquo;why you, why now?&rdquo; If it
-                  can&apos;t, it doesn&apos;t go out.
-                </p>
-              </GridCard>
-            </Reveal>
-          </>
-        }
-      />
-
-      <PhaseSection
-        id="phase-3"
-        num="phase 3"
-        title="win the meetings."
-        timeline="ongoing from week 4"
-        accent="accent--blue"
-        intro="Oximy wins when technical buyers trust the person across the table. The job is to compress time-to-trust — show the problem clearly, show the product honestly."
-        grid={
-          <>
-            <Reveal delay={0.08}>
-              <GridCard title="strengths to lead with">
-                <ul className="space-y-2 muted" style={{ listStyle: "none", padding: 0 }}>
-                  {[
-                    "speak engineer and founder — no translation layer needed",
-                    "can walk through AI security architecture without a slide deck",
-                    "founder's office background: comfortable with ambiguity and speed",
-                    "systems thinker — meetings end with a clear next step, not a vague follow-up",
-                  ].map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </GridCard>
-            </Reveal>
-            <Reveal delay={0.14}>
-              <GridCard title="the line that closes">
+              <PhaseCard
+                num="phase 3"
+                title="Win the meetings"
+                titleIcon={<PixelPhaseIcon variant="meet" />}
+                accent="accent--blue"
+              >
+                <PhaseP>This is probably where I&apos;m strongest.</PhaseP>
+                <PhaseP muted>
+                  If I can get someone on a call, I can usually move the
+                  conversation somewhere meaningful.
+                </PhaseP>
+                <PhaseP muted>Not because I &ldquo;sell aggressively.&rdquo;</PhaseP>
+                <PhaseP muted>Because I adapt fast in live conversations.</PhaseP>
+                <PhaseLabel>I&apos;m good at:</PhaseLabel>
+                <PhaseList
+                  items={[
+                    "reading what people actually care about",
+                    "simplifying technical ideas",
+                    "asking the right questions quickly",
+                    "making conversations feel collaborative",
+                    "understanding operational pain in real time",
+                    "creating trust without sounding scripted",
+                  ]}
+                />
+                <PhaseP muted>
+                  A lot of enterprise GTM dies before the meeting.
+                </PhaseP>
+                <PhaseP muted>
+                  I think my advantage starts once the meeting begins.
+                </PhaseP>
+                <PhaseP muted>Honestly, doubting that is fair.</PhaseP>
                 <p
+                  className="bitmap-accent-line"
                   style={{
-                    fontFamily: "var(--font-serif)",
-                    fontStyle: "italic",
-                    fontWeight: 300,
-                    fontSize: "clamp(16px, 1.2vw, 19px)",
-                    lineHeight: 1.5,
+                    fontSize: "inherit",
+                    lineHeight: 1.45,
                     color: "var(--primary)",
+                    margin: "6px 0 0",
                   }}
                 >
-                  &ldquo;Get on a call with me and see — I&apos;ll show you
-                  exactly where AI is leaking in your stack and what Oximy
-                  catches in the first ten minutes.&rdquo;
+                  Get on a call with me and see.
                 </p>
-              </GridCard>
+              </PhaseCard>
             </Reveal>
-          </>
-        }
-        body={
-          <p className="body-text muted">
-            Demo-led, pain-first, no feature tours. If the call doesn&apos;t
-            surface a real problem, it&apos;s a learning signal for the map —
-            not a wasted hour.
-          </p>
-        }
-      />
 
-      <PhaseSection
-        id="phase-4"
-        num="phase 4"
-        title="narrative and ecosystem presence."
-        timeline="weeks 6–10"
-        accent="accent--pink"
-        intro="Once conversations are flowing, GTM shifts to compounding visibility — Oximy should become the name people reference when AI security comes up."
-        grid={
-          <>
-            <Reveal delay={0.08}>
-              <GridCard title="positioning areas">
-                <ul className="space-y-2 muted" style={{ listStyle: "none", padding: 0 }}>
-                  {[
-                    "AI security as infrastructure — not a compliance checkbox",
-                    "intelligence-first GTM mirrors the product thesis",
-                    "technical trust before commercial velocity",
-                    "built for teams shipping AI faster than their security can keep up",
-                  ].map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </GridCard>
-            </Reveal>
-            <Reveal delay={0.12}>
-              <GridCard title="content style">
-                <ul className="space-y-2 muted" style={{ listStyle: "none", padding: 0 }}>
-                  {[
-                    "practical breakdowns — not thought-leader fluff",
-                    "anonymized patterns from the signal map and customer calls",
-                    "short technical posts, not 2,000-word essays",
-                    "founder voice + practitioner depth",
-                  ].map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </GridCard>
-            </Reveal>
             <Reveal delay={0.16}>
-              <GridCard title="goal">
-                <p className="muted">
-                  When someone in a security Slack channel asks &ldquo;what are
-                  people using for AI security?&rdquo; — Oximy is in the first
-                  three replies.
-                </p>
-              </GridCard>
+              <PhaseCard
+                num="phase 4"
+                title="Build narrative and ecosystem presence"
+                titleIcon={<PixelPhaseIcon variant="narrative" />}
+                timeline="weeks 6–10"
+                accent="accent--pink"
+              >
+                <PhaseP>
+                  Most AI security companies sound identical online.
+                </PhaseP>
+                <PhaseP muted>Too much jargon.</PhaseP>
+                <PhaseP muted>Too much fear marketing.</PhaseP>
+                <PhaseP muted>Too little real operator insight.</PhaseP>
+                <PhaseLabel>I&apos;d help position Oximy around:</PhaseLabel>
+                <PhaseList
+                  items={[
+                    "real AI adoption problems",
+                    "operational security gaps",
+                    "governance friction",
+                    "velocity vs safety tradeoffs",
+                    "lessons from teams shipping AI fast",
+                  ]}
+                />
+                <PhaseLabel>Content style</PhaseLabel>
+                <PhaseP muted>Not polished enterprise fluff.</PhaseP>
+                <PhaseP muted>More:</PhaseP>
+                <PhaseList
+                  items={[
+                    "observations",
+                    "breakdowns",
+                    "short operator insights",
+                    "ecosystem analysis",
+                    "technical GTM content",
+                    "\"here's what we're seeing\" style narratives",
+                  ]}
+                />
+                <PhaseLabel>The goal is to become recognizable inside:</PhaseLabel>
+                <PhaseList
+                  items={[
+                    "AI founder circles",
+                    "infra communities",
+                    "engineering ecosystems",
+                    "startup operators",
+                  ]}
+                />
+              </PhaseCard>
             </Reveal>
-          </>
-        }
-      />
 
-      <PhaseSection
-        id="phase-5"
-        num="phase 5"
-        title="turn GTM into infrastructure."
-        timeline="long-term"
-        accent="accent--orange"
-        intro="The end state isn't a heroic outbound motion — it's a machine that ingests signals, routes conversations, and compounds distribution without linear headcount."
-        grid={
-          <>
-            <Reveal delay={0.08}>
-              <GridCard title="systems to build">
-                <ul className="space-y-2 muted" style={{ listStyle: "none", padding: 0 }}>
-                  {[
-                    "signal ingestion pipeline — funding, jobs, incidents, tool adoption",
-                    "CRM wired to signal data, not just contact records",
-                    "content repurposing from customer conversations and demos",
-                    "partner and channel playbook for security consultancies",
-                    "metrics dashboard — pipeline by signal source, not just stage",
-                  ].map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </GridCard>
+            <Reveal delay={0.2}>
+              <PhaseCard
+                num="phase 5"
+                title="Turn GTM into infrastructure"
+                titleIcon={<PixelPhaseIcon variant="infra" />}
+                timeline="long-term"
+                accent="accent--orange"
+              >
+                <PhaseP muted>
+                  Long-term, GTM shouldn&apos;t depend on brute-force outreach
+                  forever.
+                </PhaseP>
+                <PhaseLabel>I&apos;d help build:</PhaseLabel>
+                <PhaseList
+                  items={[
+                    "outbound systems",
+                    "CRM workflows",
+                    "lead intelligence pipelines",
+                    "content loops",
+                    "meeting feedback systems",
+                    "referral loops",
+                    "automated follow-ups",
+                    "account research systems",
+                    "ecosystem relationship maps",
+                  ]}
+                />
+                <PhaseP muted>Because eventually:</PhaseP>
+                <PhaseP>
+                  distribution itself should become infrastructure.
+                </PhaseP>
+                <PhaseP muted>That&apos;s already how I think.</PhaseP>
+              </PhaseCard>
             </Reveal>
-            <Reveal delay={0.14}>
-              <GridCard title="distribution as infrastructure">
-                <p className="muted">
-                  Outbound, content, community, and partnerships all feed the
-                  same map. GTM stops being a function and becomes an operating
-                  layer — the same way Oximy wants security to be infrastructure,
-                  not an afterthought.
-                </p>
-              </GridCard>
-            </Reveal>
-          </>
-        }
-      />
+          </div>
+        </div>
+      </section>
 
       <Column as="section" topPad={120} id="why-me">
-        <Reveal y={18} blur={10}>
-          <p className="meta" style={{ marginBottom: 22 }}>
-            why I fit this
+        <Reveal>
+          <SectionHeading
+            icon={<PixelStarIcon />}
+            className="section-title accent--blue"
+            style={{ fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)" }}
+          >
+            Why I fit this
+          </SectionHeading>
+        </Reveal>
+
+        <Reveal delay={0.1}>
+          <p className="body-text mt-10">
+            I don&apos;t come from a polished enterprise background.
           </p>
         </Reveal>
 
-        <SplitTextReveal
-          as="h2"
-          className="section-title accent--blue"
-          text={"GTM is systems design."}
-          splitBy="word"
-          stagger={0.05}
-        />
-
         <Reveal delay={0.12}>
-          <p className="body-text mt-10">
-            At{" "}
-            <span style={{ color: "var(--primary)" }}>Saturn Labs</span>, I
-            worked as an extension of the founding team — product, ops, hiring,
-            execution. Zero-to-one in messy environments where the playbook
-            doesn&apos;t exist yet.
-          </p>
+          <p className="body-text mt-7">I come from environments where:</p>
+        </Reveal>
+
+        <Reveal delay={0.14}>
+          <ul className="body-text mt-6 space-y-3" style={{ listStyle: "none", padding: 0 }}>
+            {[
+              "ambiguity is normal",
+              "systems are broken",
+              "timelines are unrealistic",
+              "and execution matters more than presentations",
+            ].map((item) => (
+              <li
+                key={item}
+                style={{
+                  borderLeft: "1px solid var(--line)",
+                  paddingLeft: 14,
+                }}
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
         </Reveal>
 
         <Reveal delay={0.18}>
-          <p className="body-text mt-7">
-            As overall convener for{" "}
-            <span style={{ color: "var(--primary)" }}>Inter IIT Tech Meet</span>,
-            I coordinated thousands of stakeholders, vendors, and timelines —
-            the same muscle GTM needs when you&apos;re building trust across
-            technical and commercial sides.
+          <p className="body-text mt-10">
+            At Saturn Labs, I worked across:
           </p>
+        </Reveal>
+
+        <Reveal delay={0.2}>
+          <ul className="body-text mt-6 space-y-3" style={{ listStyle: "none", padding: 0 }}>
+            {[
+              "operations",
+              "hiring",
+              "product execution",
+              "backend systems",
+              "rapid iteration",
+            ].map((item) => (
+              <li
+                key={item}
+                style={{
+                  borderLeft: "1px solid var(--line)",
+                  paddingLeft: 14,
+                }}
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
         </Reveal>
 
         <Reveal delay={0.24}>
           <p className="body-text mt-7">
-            With{" "}
-            <a
-              className="link"
-              href="https://trxnd.io"
-              target="_blank"
-              rel="noreferrer"
-              data-cursor="link"
-            >
-              TRXND
-            </a>
-            , I&apos;m building distribution systems — content engines, warm-lead
-            pipelines, orchestrated conversations. GTM isn&apos;t separate from
-            that work; it&apos;s the same thesis applied to a security product.
+            Sometimes the gap between idea and deployment was less than a day.
+          </p>
+        </Reveal>
+
+        <Reveal delay={0.28}>
+          <p className="body-text mt-10">
+            At Inter IIT Tech Meet 14.0, I led execution across:
           </p>
         </Reveal>
 
         <Reveal delay={0.3}>
-          <p className="body-text mt-7">
-            I think about GTM as systems design: signals in, prioritized
-            actions out, feedback loops that get sharper every week. I&apos;m
-            India-based but not geography-bound — async-first, US/EU timezone
-            overlap, and comfortable owning a motion that spans regions from day
-            one.
+          <ul className="body-text mt-6 space-y-3" style={{ listStyle: "none", padding: 0 }}>
+            {[
+              "23 IITs",
+              "2000+ participants",
+              "₹1Cr+ operations",
+              "multiple external partners and internal teams",
+            ].map((item) => (
+              <li
+                key={item}
+                style={{
+                  borderLeft: "1px solid var(--line)",
+                  paddingLeft: 14,
+                }}
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+
+        <Reveal delay={0.34}>
+          <p className="body-text mt-7">That experience trained me to:</p>
+        </Reveal>
+
+        <Reveal delay={0.36}>
+          <ul className="body-text mt-6 space-y-3" style={{ listStyle: "none", padding: 0 }}>
+            {[
+              "operate under pressure",
+              "coordinate chaos",
+              "make decisions quickly",
+              "and keep moving when things stop being organized",
+            ].map((item) => (
+              <li
+                key={item}
+                style={{
+                  borderLeft: "1px solid var(--line)",
+                  paddingLeft: 14,
+                }}
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+
+        <Reveal delay={0.4}>
+          <p className="body-text mt-10">
+            I also think deeply about distribution.
           </p>
         </Reveal>
 
-        <Reveal delay={0.38}>
-          <p
-            className="mt-14"
-            style={{
-              fontFamily: "var(--font-serif)",
-              fontStyle: "italic",
-              fontWeight: 300,
-              fontSize: "clamp(18px, 1.6vw, 24px)",
-              lineHeight: 1.45,
-              color: "var(--primary)",
-            }}
-          >
-            Oximy needs someone who can build the map before the motion, earn
-            trust in technical rooms, and turn early wins into infrastructure.
-            That&apos;s the work I do best.
+        <Reveal delay={0.42}>
+          <p className="body-text mt-7">TRXND came from a simple belief:</p>
+        </Reveal>
+
+        <Reveal delay={0.44}>
+          <p className="body-text mt-7">
+            most products don&apos;t fail at the build. they fail at distribution.
+          </p>
+        </Reveal>
+
+        <Reveal delay={0.46}>
+          <p className="body-text mt-7">So I&apos;ve spent time building:</p>
+        </Reveal>
+
+        <Reveal delay={0.48}>
+          <ul className="body-text mt-6 space-y-3" style={{ listStyle: "none", padding: 0 }}>
+            {[
+              "content engines",
+              "outbound systems",
+              "lead pipelines",
+              "narrative systems",
+              "Reddit intelligence tooling",
+              "marketing infrastructure",
+              "account orchestration systems",
+            ].map((item) => (
+              <li
+                key={item}
+                style={{
+                  borderLeft: "1px solid var(--line)",
+                  paddingLeft: 14,
+                }}
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+
+        <Reveal delay={0.52}>
+          <p className="body-text mt-10">
+            Because I don&apos;t see GTM as &ldquo;sales.&rdquo;
+          </p>
+        </Reveal>
+
+        <Reveal delay={0.54}>
+          <p className="body-text mt-7">I see it as systems design.</p>
+        </Reveal>
+
+        <Reveal delay={0.58}>
+          <p className="body-text mt-10">
+            And even though I&apos;m based in India, I don&apos;t think modern
+            GTM is geography-bound anymore.
+          </p>
+        </Reveal>
+
+        <Reveal delay={0.6}>
+          <p className="body-text mt-7">The buyers may be in SF.</p>
+        </Reveal>
+
+        <Reveal delay={0.62}>
+          <p className="body-text mt-7">But the leverage now comes from:</p>
+        </Reveal>
+
+        <Reveal delay={0.64}>
+          <ul className="body-text mt-6 space-y-3" style={{ listStyle: "none", padding: 0 }}>
+            {[
+              "intelligence",
+              "positioning",
+              "communication",
+              "systems",
+              "speed",
+              "consistency",
+              "relationship building online",
+            ].map((item) => (
+              <li
+                key={item}
+                style={{
+                  borderLeft: "1px solid var(--line)",
+                  paddingLeft: 14,
+                }}
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+
+        <Reveal delay={0.68}>
+          <p className="body-text mt-10">
+            Most founders don&apos;t need another generic SDR.
+          </p>
+        </Reveal>
+
+        <Reveal delay={0.7}>
+          <p className="body-text mt-7">They need someone who:</p>
+        </Reveal>
+
+        <Reveal delay={0.72}>
+          <ul className="body-text mt-6 space-y-3" style={{ listStyle: "none", padding: 0 }}>
+            {[
+              "thinks like an operator",
+              "understands technical environments",
+              "communicates naturally",
+              "learns fast",
+              "builds systems",
+              "creates momentum",
+              "and can execute independently",
+            ].map((item) => (
+              <li
+                key={item}
+                style={{
+                  borderLeft: "1px solid var(--line)",
+                  paddingLeft: 14,
+                }}
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+
+        <Reveal delay={0.76}>
+          <p className="body-text mt-10">
+            That&apos;s the lane where I fit naturally.
           </p>
         </Reveal>
       </Column>
