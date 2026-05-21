@@ -920,3 +920,144 @@ html.lenis body {
   vertical-align: -0.12em;
   color: inherit;
 }
+
+/* ---------------------------------------------------
+   CRUSTDATA APPLICATION — indigo heading palette
+   Softer than powder blue (--hero-blue), deeper than
+   cream text. Readable on --bg (#0e1117).
+--------------------------------------------------- */
+.crustdata-application {
+  --heading-indigo: #7c86f0;
+}
+
+.crustdata-application .accent--indigo {
+  color: var(--heading-indigo);
+}
+
+.crustdata-application .crustdata-system-label {
+  color: var(--heading-indigo);
+  opacity: 0.72;
+}
+
+.crustdata-application .crustdata-side-heading {
+  color: var(--heading-indigo);
+  opacity: 0.85;
+}
+
+.crustdata-application .crustdata-card-title {
+  color: var(--heading-indigo);
+}
+
+.crustdata-application #hero .hero-bitmap-title {
+  font-family: var(--font-ppbitmap);
+  font-weight: 400;
+  font-style: normal;
+  color: var(--heading-indigo);
+  letter-spacing: 0.04em;
+  line-height: 1.12;
+  text-transform: lowercase;
+}
+
+.crustdata-application .bitmap-accent-line {
+  font-family: var(--font-ppbitmap);
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0.03em;
+}
+
+.crustdata-application .crustdata-section-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: currentColor;
+}
+
+.crustdata-application .crustdata-section-icon svg {
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.crustdata-application .crustdata-heading-row {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(12px, 2vw, 20px);
+}
+
+.crustdata-application .crustdata-hero-icon {
+  margin-top: 0.35em;
+  color: var(--heading-indigo);
+}
+
+.crustdata-application .crustdata-hero-icon svg {
+  image-rendering: auto;
+}
+
+/* adaptive signal ranking — technical spec flowchart */
+.crustdata-flowchart {
+  margin-top: 48px;
+  padding: clamp(20px, 3vw, 28px);
+  border: 1px solid var(--line);
+  background: rgba(124, 134, 240, 0.03);
+  font-family: var(--font-sans);
+  overflow-x: auto;
+}
+
+.crustdata-flowchart-label {
+  margin-bottom: 20px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  color: var(--heading-indigo);
+  opacity: 0.72;
+}
+
+.crustdata-flowchart svg {
+  display: block;
+  width: 100%;
+  min-width: 280px;
+  max-width: 640px;
+  height: auto;
+}
+
+.crustdata-flow-node {
+  fill: rgba(14, 17, 23, 0.92);
+  stroke: var(--line);
+  stroke-width: 1;
+}
+
+.crustdata-flow-node--accent {
+  stroke: rgba(124, 134, 240, 0.45);
+}
+
+.crustdata-flow-node--output {
+  stroke: rgba(124, 134, 240, 0.28);
+}
+
+.crustdata-flow-text {
+  fill: var(--primary);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.03em;
+}
+
+.crustdata-flow-text--accent {
+  fill: var(--heading-indigo);
+}
+
+.crustdata-flow-text--muted {
+  fill: var(--secondary);
+  font-size: 9.5px;
+}
+
+.crustdata-flow-line {
+  stroke: rgba(124, 134, 240, 0.35);
+  stroke-width: 1;
+  fill: none;
+}
+
+.crustdata-flow-arrow {
+  fill: rgba(124, 134, 240, 0.5);
+}
