@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 /**
  * HERO — plain text only.
- * "product · design · build" in rust serif on the slate bg.
+ * "product · design · build" — Gilroy Bold · Tobias serif · PP Mondwest.
  *  - desktop: single line, centered, large
  *  - mobile:  stacked, left-aligned, no dots (handled by globals.css)
  */

@@ -362,15 +362,22 @@ html.lenis body {
   display: inline-block;
 }
 
-/* tri-color editorial palette per word */
+/* tri-color editorial palette + per-word type */
 .hero-quote .word--orange {
   color: var(--hero-orange);
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-style: normal;
 }
 .hero-quote .word--pink {
   color: var(--hero-pink);
 }
 .hero-quote .word--blue {
   color: var(--hero-blue);
+  font-family: var(--font-ppbitmap);
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0.03em;
 }
 
 /* dot separators stay neutral so the three accent colors lead */
