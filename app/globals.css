@@ -1061,3 +1061,138 @@ html.lenis body {
 .crustdata-flow-arrow {
   fill: rgba(124, 134, 240, 0.5);
 }
+
+/* ---------------------------------------------------
+   RETELL GTM — teal heading palette (voice / waveform)
+   Distinct from crustdata indigo and oximy orange.
+   Readable on --bg (#0e1117).
+--------------------------------------------------- */
+.realtell-gtm {
+  --heading-teal: #62c4b8;
+}
+
+.realtell-gtm .accent--teal {
+  color: var(--heading-teal);
+}
+
+.realtell-gtm .realtell-system-label {
+  color: var(--heading-teal);
+  opacity: 0.72;
+}
+
+.realtell-gtm .realtell-card-title {
+  color: var(--heading-teal);
+}
+
+.realtell-gtm #hero .hero-bitmap-title {
+  font-family: var(--font-ppbitmap);
+  font-weight: 400;
+  font-style: normal;
+  color: var(--heading-teal);
+  letter-spacing: 0.04em;
+  line-height: 1.12;
+  text-transform: lowercase;
+}
+
+.realtell-gtm .bitmap-accent-line {
+  font-family: var(--font-ppbitmap);
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0.03em;
+}
+
+.realtell-gtm .realtell-section-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: currentColor;
+}
+
+.realtell-gtm .realtell-section-icon svg {
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.realtell-gtm .realtell-heading-row {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(12px, 2vw, 20px);
+}
+
+.realtell-gtm .realtell-hero-icon {
+  margin-top: 0.35em;
+  color: var(--heading-teal);
+}
+
+.realtell-gtm .realtell-hero-icon svg {
+  image-rendering: auto;
+}
+
+.realtell-flowchart {
+  margin-top: 48px;
+  padding: clamp(20px, 3vw, 28px);
+  border: 1px solid var(--line);
+  background: rgba(98, 196, 184, 0.03);
+  font-family: var(--font-sans);
+  overflow-x: auto;
+}
+
+.realtell-flowchart-label {
+  margin-bottom: 20px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  color: var(--heading-teal);
+  opacity: 0.72;
+}
+
+.realtell-flowchart svg {
+  display: block;
+  width: 100%;
+  min-width: 280px;
+  max-width: 640px;
+  height: auto;
+}
+
+.realtell-flow-node {
+  fill: rgba(14, 17, 23, 0.92);
+  stroke: var(--line);
+  stroke-width: 1;
+}
+
+.realtell-flow-node--accent {
+  stroke: rgba(98, 196, 184, 0.45);
+}
+
+.realtell-flow-node--output {
+  stroke: rgba(98, 196, 184, 0.28);
+}
+
+.realtell-flow-text {
+  fill: var(--primary);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.03em;
+}
+
+.realtell-flow-text--accent {
+  fill: var(--heading-teal);
+}
+
+.realtell-flow-text--muted {
+  fill: var(--secondary);
+  font-size: 9.5px;
+}
+
+.realtell-flow-line {
+  stroke: rgba(98, 196, 184, 0.35);
+  stroke-width: 1;
+  fill: none;
+}
+
+.realtell-flow-arrow {
+  fill: rgba(98, 196, 184, 0.5);
+}

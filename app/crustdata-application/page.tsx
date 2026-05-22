@@ -25,6 +25,17 @@ type Project = {
 
 const PROJECTS: Project[] = [
   {
+    title: "TRXND",
+    thesis:
+      "live content distribution engines i'm building. main site, app pipeline, reddit intelligence.",
+    stack: "content routing · scheduling · channel output",
+    links: [
+      { label: "trxnd.io", href: "https://trxnd.io" },
+      { label: "app.trxnd.io", href: "https://app.trxnd.io" },
+      { label: "reddit.trxnd.io", href: "https://reddit.trxnd.io" },
+    ],
+  },
+  {
     title: "IronClaw",
     thesis:
       "multi-agent android automation using accessibility trees, not apis.",
@@ -473,6 +484,11 @@ export default function CrustdataApplicationPage() {
               currently
             </p>
             <ul className="space-y-[10px]">
+              <li className="body-text" style={{ fontSize: 15 }}>
+                live content distribution engines at{" "}
+                <span style={{ color: "var(--primary)" }}>trxnd</span>
+                <span className="muted"> · shipping</span>
+              </li>
               <li className="body-text" style={{ fontSize: 15 }}>
                 founder&apos;s office at{" "}
                 <span style={{ color: "var(--primary)" }}>saturn labs</span>
