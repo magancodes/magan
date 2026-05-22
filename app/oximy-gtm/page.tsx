@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import Column from "@/components/Column";
+import EducationCredential from "@/components/EducationCredential";
 import Reveal from "@/components/Reveal";
 import SplitTextReveal from "@/components/SplitTextReveal";
 import clsx from "@/lib/clsx";
@@ -347,6 +348,10 @@ export default function OximyGtmPage() {
             an intelligence and distribution system for AI security, not a
             traditional sales playbook.
           </p>
+        </Reveal>
+
+        <Reveal delay={0.28}>
+          <EducationCredential className="mt-10" />
         </Reveal>
       </Column>
 

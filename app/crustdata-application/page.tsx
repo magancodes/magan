@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Column from "@/components/Column";
+import EducationCredential from "@/components/EducationCredential";
 import Reveal from "@/components/Reveal";
 import SplitTextReveal from "@/components/SplitTextReveal";
 
@@ -353,6 +354,10 @@ export default function CrustdataApplicationPage() {
             signal intelligence and live context for ai agents, not another
             static data feed.
           </p>
+        </Reveal>
+
+        <Reveal delay={0.28}>
+          <EducationCredential className="mt-10" />
         </Reveal>
       </Column>
 

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Column from "@/components/Column";
+import EducationCredential from "@/components/EducationCredential";
 import Reveal from "@/components/Reveal";
 import SplitTextReveal from "@/components/SplitTextReveal";
 
@@ -427,6 +428,10 @@ export default function RunablePlsHireMePage() {
             runable execution agents and founder&apos;s office work. i want to
             help compound trust, not silent churn.
           </p>
+        </Reveal>
+
+        <Reveal delay={0.28}>
+          <EducationCredential className="mt-10" />
         </Reveal>
       </Column>
 

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Column from "@/components/Column";
+import EducationCredential from "@/components/EducationCredential";
 import Reveal from "@/components/Reveal";
 import SplitTextReveal from "@/components/SplitTextReveal";
 
@@ -405,6 +406,10 @@ export default function RealtellGtmPage() {
             realtime voice + gtm infrastructure. turning calls into a
             continuously learning outbound system.
           </p>
+        </Reveal>
+
+        <Reveal delay={0.28}>
+          <EducationCredential className="mt-10" />
         </Reveal>
       </Column>
 

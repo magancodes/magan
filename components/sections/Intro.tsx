@@ -1,6 +1,7 @@
 "use client";
 
 import Column from "@/components/Column";
+import EducationCredential from "@/components/EducationCredential";
 import Reveal from "@/components/Reveal";
 import SplitTextReveal from "@/components/SplitTextReveal";
 
@@ -37,6 +38,10 @@ export default function Intro() {
         >
           i build systems for chaotic environments.
         </p>
+      </Reveal>
+
+      <Reveal delay={0.56} y={10} blur={6}>
+        <EducationCredential variant="prominent" className="mt-12" />
       </Reveal>
 
       <Reveal delay={0.62}>
@@ -123,11 +128,6 @@ export default function Intro() {
         </div>
       </Reveal>
 
-      <Reveal delay={1.2}>
-        <p className="meta mt-12" style={{ opacity: 0.7 }}>
-          iit patna · math + computing · b.tech &apos;28
-        </p>
-      </Reveal>
     </Column>
   );
 }
