@@ -1196,3 +1196,138 @@ html.lenis body {
 .realtell-flow-arrow {
   fill: rgba(98, 196, 184, 0.5);
 }
+
+/* ---------------------------------------------------
+   RUNABLE PAGE — warm amber heading palette
+   Distinct from crustdata indigo, realtell teal, oximy orange.
+   Readable on --bg (#0e1117).
+--------------------------------------------------- */
+.runable-page {
+  --heading-amber: #e8b04a;
+}
+
+.runable-page .accent--amber {
+  color: var(--heading-amber);
+}
+
+.runable-page .runable-system-label {
+  color: var(--heading-amber);
+  opacity: 0.72;
+}
+
+.runable-page .runable-card-title {
+  color: var(--heading-amber);
+}
+
+.runable-page #hero .hero-bitmap-title {
+  font-family: var(--font-ppbitmap);
+  font-weight: 400;
+  font-style: normal;
+  color: var(--heading-amber);
+  letter-spacing: 0.04em;
+  line-height: 1.12;
+  text-transform: lowercase;
+}
+
+.runable-page .bitmap-accent-line {
+  font-family: var(--font-ppbitmap);
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0.03em;
+}
+
+.runable-page .runable-section-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: currentColor;
+}
+
+.runable-page .runable-section-icon svg {
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.runable-page .runable-heading-row {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(12px, 2vw, 20px);
+}
+
+.runable-page .runable-hero-icon {
+  margin-top: 0.35em;
+  color: var(--heading-amber);
+}
+
+.runable-page .runable-hero-icon svg {
+  image-rendering: auto;
+}
+
+.runable-flowchart {
+  margin-top: 48px;
+  padding: clamp(20px, 3vw, 28px);
+  border: 1px solid var(--line);
+  background: rgba(232, 176, 74, 0.03);
+  font-family: var(--font-sans);
+  overflow-x: auto;
+}
+
+.runable-flowchart-label {
+  margin-bottom: 20px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  color: var(--heading-amber);
+  opacity: 0.72;
+}
+
+.runable-flowchart svg {
+  display: block;
+  width: 100%;
+  min-width: 280px;
+  max-width: 640px;
+  height: auto;
+}
+
+.runable-flow-node {
+  fill: rgba(14, 17, 23, 0.92);
+  stroke: var(--line);
+  stroke-width: 1;
+}
+
+.runable-flow-node--accent {
+  stroke: rgba(232, 176, 74, 0.45);
+}
+
+.runable-flow-node--output {
+  stroke: rgba(232, 176, 74, 0.28);
+}
+
+.runable-flow-text {
+  fill: var(--primary);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.03em;
+}
+
+.runable-flow-text--accent {
+  fill: var(--heading-amber);
+}
+
+.runable-flow-text--muted {
+  fill: var(--secondary);
+  font-size: 9.5px;
+}
+
+.runable-flow-line {
+  stroke: rgba(232, 176, 74, 0.35);
+  stroke-width: 1;
+  fill: none;
+}
+
+.runable-flow-arrow {
+  fill: rgba(232, 176, 74, 0.5);
+}
