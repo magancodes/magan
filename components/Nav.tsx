@@ -11,8 +11,9 @@ const SECTIONS: Section[] = [
   { id: "trxnd", num: "04", label: "trxnd" },
   { id: "philosophy", num: "05", label: "philosophy" },
   { id: "thoughts", num: "06", label: "fragments" },
-  { id: "applications", num: "07", label: "applications" },
-  { id: "contact", num: "08", label: "contact" },
+  { id: "projects", num: "07", label: "builds" },
+  { id: "applications", num: "08", label: "applications" },
+  { id: "contact", num: "09", label: "contact" },
 ];
 
 export default function Nav() {

@@ -33,7 +33,7 @@ export default function Applications() {
     <Column id="applications" topPad={260}>
       <Reveal y={18} blur={10}>
         <p className="meta" style={{ marginBottom: 22 }}>
-          07 — applications
+          08 — applications
         </p>
       </Reveal>
 

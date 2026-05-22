@@ -6,6 +6,7 @@ import Past from "@/components/sections/Past";
 import Trxnd from "@/components/sections/Trxnd";
 import Philosophy from "@/components/sections/Philosophy";
 import Thoughts from "@/components/sections/Thoughts";
+import Projects from "@/components/sections/Projects";
 import Applications from "@/components/sections/Applications";
 import Contact from "@/components/sections/Contact";
 
@@ -20,6 +21,7 @@ export default function Page() {
       <Trxnd />
       <Philosophy />
       <Thoughts />
+      <Projects />
       <Applications />
       <Contact />
     </main>
