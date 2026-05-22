@@ -18,7 +18,7 @@ export default function Contact() {
     <Column id="contact" topPad={260} as="footer">
       <Reveal y={18} blur={10}>
         <p className="meta" style={{ marginBottom: 26 }}>
-          07 — contact
+          08 — contact
         </p>
       </Reveal>
 
@@ -40,7 +40,7 @@ export default function Contact() {
         ))}
       </ul>
 
-      <Reveal delay={0.4} y={10} blur={8}>
+      <Reveal delay={0.32} y={10} blur={8}>
         <p
           className="mt-32 muted"
           style={{
