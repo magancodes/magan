@@ -7,6 +7,11 @@ import SplitTextReveal from "@/components/SplitTextReveal";
 
 const APPLICATIONS = [
   {
+    label: "krimos gtm",
+    href: "/krimos-gtm",
+    blurb: "zero to five. governed gtm.",
+  },
+  {
     label: "oximy gtm",
     href: "/oximy-gtm",
     blurb: "build intelligence before you scale outreach.",

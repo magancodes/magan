@@ -1338,3 +1338,148 @@ html.lenis body {
 .runable-flow-arrow {
   fill: rgba(232, 176, 74, 0.5);
 }
+
+/* ---------------------------------------------------
+   KRIMOS GTM — deep governance green palette
+   Distinct from realtell teal, crustdata indigo, runable amber.
+   Readable on --bg (#0e1117).
+--------------------------------------------------- */
+.krimos-gtm {
+  --heading-governance: #3d9b82;
+}
+
+.krimos-gtm .accent--governance {
+  color: var(--heading-governance);
+}
+
+.krimos-gtm .krimos-system-label {
+  color: var(--heading-governance);
+  opacity: 0.72;
+}
+
+.krimos-gtm .krimos-card-title {
+  color: var(--heading-governance);
+}
+
+.krimos-gtm #hero .hero-bitmap-title {
+  font-family: var(--font-ppbitmap);
+  font-weight: 400;
+  font-style: normal;
+  color: var(--heading-governance);
+  letter-spacing: 0.04em;
+  line-height: 1.12;
+  text-transform: lowercase;
+}
+
+.krimos-gtm .bitmap-accent-line {
+  font-family: var(--font-ppbitmap);
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0.03em;
+}
+
+.krimos-gtm .krimos-section-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: currentColor;
+}
+
+.krimos-gtm .krimos-section-icon svg {
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.krimos-gtm .krimos-heading-row {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(12px, 2vw, 20px);
+}
+
+.krimos-gtm .krimos-hero-icon {
+  margin-top: 0.35em;
+  color: var(--heading-governance);
+}
+
+.krimos-gtm .krimos-hero-icon svg {
+  image-rendering: auto;
+}
+
+.krimos-flowchart {
+  margin-top: 48px;
+  padding: clamp(20px, 3vw, 28px);
+  border: 1px solid var(--line);
+  background: rgba(61, 155, 130, 0.03);
+  font-family: var(--font-sans);
+  overflow-x: auto;
+}
+
+.krimos-flowchart-label {
+  margin-bottom: 20px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  color: var(--heading-governance);
+  opacity: 0.72;
+}
+
+.krimos-flowchart svg {
+  display: block;
+  width: 100%;
+  min-width: 280px;
+  max-width: 640px;
+  height: auto;
+}
+
+.krimos-flow-node {
+  fill: rgba(14, 17, 23, 0.92);
+  stroke: var(--line);
+  stroke-width: 1;
+}
+
+.krimos-flow-node--accent {
+  stroke: rgba(61, 155, 130, 0.45);
+}
+
+.krimos-flow-node--gate {
+  stroke: rgba(61, 155, 130, 0.55);
+  stroke-dasharray: 4 2;
+}
+
+.krimos-flow-node--output {
+  stroke: rgba(61, 155, 130, 0.28);
+}
+
+.krimos-flow-text {
+  fill: var(--primary);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.03em;
+}
+
+.krimos-flow-text--accent {
+  fill: var(--heading-governance);
+}
+
+.krimos-flow-text--muted {
+  fill: var(--secondary);
+  font-size: 9.5px;
+}
+
+.krimos-flow-line {
+  stroke: rgba(61, 155, 130, 0.35);
+  stroke-width: 1;
+  fill: none;
+}
+
+.krimos-flow-line--dashed {
+  stroke-dasharray: 4 3;
+  opacity: 0.5;
+}
+
+.krimos-flow-arrow {
+  fill: rgba(61, 155, 130, 0.5);
+}
