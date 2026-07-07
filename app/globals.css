@@ -872,6 +872,12 @@ html.lenis body {
   text-transform: lowercase;
 }
 
+/* reddit-plan hero keeps its content verbatim (capital "O"/"R"),
+   so opt out of the shared lowercase transform */
+.oximy-gtm #hero .hero-bitmap-title.oximy-title-verbatim {
+  text-transform: none;
+}
+
 .oximy-gtm .oximy-phase-title {
   font-family: var(--font-serif);
   font-weight: 300;
