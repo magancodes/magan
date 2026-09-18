@@ -81,6 +81,11 @@ export default function Intro() {
               <span className="muted"> · remote</span>
             </li>
             <li className="body-text" style={{ fontSize: 15 }}>
+              entrepreneur in residence at{" "}
+              <span style={{ color: "var(--primary)" }}>physicswallah</span>
+              <span className="muted"> · data for ai vertical</span>
+            </li>
+            <li className="body-text" style={{ fontSize: 15 }}>
               building{" "}
               <a
                 className="link"
