@@ -25,17 +25,6 @@ const ROLES: Role[] = [
     ],
   },
   {
-    range: "may 2025 — present",
-    title: "founder's office",
-    company: "aevis",
-    place: "remote",
-    bullets: [
-      "investor-focused pitch decks, sales decks, and landing pages for B2B growth and fundraising.",
-      "refined the core product experience based on user reviews — prioritised high-impact features.",
-      "mapped user feedback into actionable product improvements across cross-functional teams.",
-    ],
-  },
-  {
     range: "june 2026 — aug 2026",
     title: "software & ai intern",
     company: "doublespeed.ai",
@@ -45,6 +34,17 @@ const ROLES: Role[] = [
       "extended that path into a real-time ingestion pipeline: as new video landed, it was embedded and indexed into the same search index without waiting on overnight batch jobs.",
       "shipped a tiktok cloning pipeline on gcp using seedance models so marketing could regenerate short-form creative from reference clips at volume.",
       "built a pinterest image-sourcing pipeline that pulled visual references and fed slideshow-style clones of tiktok formats — same cloning loop, image-led instead of video-led.",
+    ],
+  },
+  {
+    range: "may 2025 — july 2025",
+    title: "founder's office",
+    company: "aevis",
+    place: "remote",
+    bullets: [
+      "investor-focused pitch decks, sales decks, and landing pages for B2B growth and fundraising.",
+      "refined the core product experience based on user reviews — prioritised high-impact features.",
+      "mapped user feedback into actionable product improvements across cross-functional teams.",
     ],
   },
   {
